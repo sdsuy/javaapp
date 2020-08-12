@@ -9,7 +9,8 @@ public class Persona {
 	public String apellido2;
 	public String nombre1;
 	public String nombre2;
-	public Date fecha_nac; String clave;
+	public Date fecha_nac; 
+	public String clave;
 	public String mail; 
 	public int id_rol;
 
