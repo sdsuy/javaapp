@@ -50,7 +50,7 @@ public class Persona {
 					persona.nombre1 = rset.getString("NOMBRE1");
 					persona.nombre2 = rset.getString("NOMBRE2");
 					persona.fecha_nac = rset.getDate("FECHA_NAC");
-					persona.clave = rset.getInt("CLAVE");
+					persona.clave = rset.getString("CLAVE");
 					persona.mail = rset.getString("MAIL");
 					persona.id_rol = rset.getInt("ID_ROL");
 					personas.add(persona);
