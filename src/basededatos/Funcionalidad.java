@@ -49,5 +49,23 @@ public class Funcionalidad {
 		}
 		return funcionalidades;
 	}
+	
+	// Actualizar un registro
+	public void actualizarFuncionalidad(int id, String nombre, String descripcion) {
+		String actualizar = "UPDATE funcionalidad SET (nombre=?, descripcion=?) WHERE id_funcionalidad=?";
+		
+		try {
+			PreparedStatement prprdstmt = conexion.prepareStatement(actualizar);
+			
+			prprdstmt.setString(1, nombre);
+			prprdstmt.setString(2, descripcion);
+			prprdstmt.setInt(3, id);
+			
+			int filasActualizadas = prprdstmt.executeUpdate();
+			System.out.println("Se actualizó: " + filasActualizadas + "registros nuevos");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
