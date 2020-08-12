@@ -2,7 +2,10 @@ package basededatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 
 public class Rol {
 	
@@ -26,6 +29,27 @@ public class Rol {
 			e.printStackTrace();
 		}
 	}
+	
+	// Seleccionar todos los registros
+		public LinkedList<dto.Rol> seleccionarFuncionalidades() {
+			LinkedList<dto.Rol> roles = new LinkedList<>(); 
+			String consulta = "SELECT * FROM funcionalidad";
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery(consulta);
+				
+				while(rset.next()) {
+					dto.Rol rol = new dto.Rol();
+					rol.id = rset.getInt("id_funcionalidad");
+					rol.nombre = rset.getString("nombre");
+					rol.descripcion = rset.getString("descripcion");
+					roles.add(rol);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return roles;
+		}
 	
 	
 
