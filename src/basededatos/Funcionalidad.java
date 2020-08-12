@@ -12,9 +12,9 @@ public class Funcionalidad {
 	private Connection conexion = DatabaseManager.getConexion();
 	
 	// Insertar funcionalidad
-	public void insertarFuncionalidad(int id, String nombre, String descripcion) {
+	public int insertarFuncionalidad(int id, String nombre, String descripcion) {
 		String insertar = "INSERT INTO funcionalidad (id_funcionalidad, nombre, descripcion) VALUES (?,?,?)";
-		
+		int filasIngresadas = 0;
 		try {
 			PreparedStatement prprdstmt = conexion.prepareStatement(insertar);
 			
@@ -22,11 +22,12 @@ public class Funcionalidad {
 			prprdstmt.setString(2, nombre);
 			prprdstmt.setString(3, descripcion);
 			
-			int filasIngresadas = prprdstmt.executeUpdate();
+			filasIngresadas = prprdstmt.executeUpdate();
 			System.out.println("Se agregó: " + filasIngresadas + "registros nuevos");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return filasIngresadas;
 	}
 	
 	// Seleccionar todos los registros
