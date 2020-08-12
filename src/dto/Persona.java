@@ -3,14 +3,14 @@ package dto;
 import java.sql.Date;
 
 public class Persona {
-	int id_persona;
-	String documento;
-	String apellido1; 
-	String apellido2;
-	String nombre1;
-	String nombre2;
-	Date fecha_nac; String clave;
-	String mail; 
-	int id_rol;
+	public int id_persona;
+	public String documento;
+	public String apellido1; 
+	public String apellido2;
+	public String nombre1;
+	public String nombre2;
+	public Date fecha_nac; String clave;
+	public String mail; 
+	public int id_rol;
 
 }
