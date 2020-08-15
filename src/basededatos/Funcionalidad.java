@@ -11,7 +11,7 @@ public class Funcionalidad {
 	
 	private Connection conexion = DatabaseManager.getConexion();
 	
-	// Insertar funcionalidad
+	// Insertar registro
 	public int insertarFuncionalidad(int id, String nombre, String descripcion) {
 		String insertar = "INSERT INTO funcionalidad (id_funcionalidad, nombre, descripcion) VALUES (?,?,?)";
 		int filasIngresadas = 0;
@@ -23,7 +23,7 @@ public class Funcionalidad {
 			prprdstmt.setString(3, descripcion);
 			
 			filasIngresadas = prprdstmt.executeUpdate();
-			System.out.println("Se agregó: " + filasIngresadas + "registros nuevos");
+			System.out.println("Se agregó: " + filasIngresadas + " registro nuevo");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -53,7 +53,7 @@ public class Funcionalidad {
 	
 	// Actualizar un registro
 	public void actualizarFuncionalidad(int id, String nombre, String descripcion) {
-		String actualizar = "UPDATE funcionalidad SET (nombre=?, descripcion=?) WHERE id_funcionalidad=?";
+		String actualizar = "UPDATE funcionalidad SET nombre=?, descripcion=? WHERE id_funcionalidad=?";
 		
 		try {
 			PreparedStatement prprdstmt = conexion.prepareStatement(actualizar);
@@ -63,10 +63,27 @@ public class Funcionalidad {
 			prprdstmt.setInt(3, id);
 			
 			int filasActualizadas = prprdstmt.executeUpdate();
-			System.out.println("Se actualizó: " + filasActualizadas + "registros nuevos");
+			System.out.println("Se actualizó: " + filasActualizadas + " registro");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// Eliminar un registro
+	public int eliminarFuncionalidad(int id) {
+		String eliminar = "DELETE FROM funcionalidad WHERE id_funcionalidad=?";
+		int filasEliminadas = 0;
+		try {
+			PreparedStatement prprdstmt = conexion.prepareStatement(eliminar);
+			
+			prprdstmt.setInt(1, id);
+			
+			filasEliminadas = prprdstmt.executeUpdate();
+			System.out.println("Se eliminó: " + filasEliminadas + " registro");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return filasEliminadas;
 	}
 
 }
