@@ -7,16 +7,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-public class Funcionalidad {
+import dto.Funcionalidad;
+
+public class DAOFuncionalidad {
 	
-	private Connection conexion = DatabaseManager.getConexion();
+	private static Connection conexion = DatabaseManager.getConexion();
+	
+	private static final String INSERT = "INSERT INTO funcionalidad (id_funcionalidad, nombre, descripcion) VALUES (?,?,?)";
+	private static final String SELECT = "SELECT * FROM funcionalidad";
+	private static final String UPDATE = "UPDATE funcionalidad SET nombre=?, descripcion=? WHERE id_funcionalidad=?";
+	private static final String DELETE = "DELETE FROM funcionalidad WHERE id_funcionalidad=?";
 	
 	// Insertar registro
-	public int insertarFuncionalidad(int id, String nombre, String descripcion) {
-		String insertar = "INSERT INTO funcionalidad (id_funcionalidad, nombre, descripcion) VALUES (?,?,?)";
+	public static int insertarFuncionalidad(int id, String nombre, String descripcion) {
 		int filasIngresadas = 0;
 		try {
-			PreparedStatement prprdstmt = conexion.prepareStatement(insertar);
+			PreparedStatement prprdstmt = conexion.prepareStatement(INSERT);
 			
 			prprdstmt.setInt(1, id);
 			prprdstmt.setString(2, nombre);
@@ -31,15 +37,14 @@ public class Funcionalidad {
 	}
 	
 	// Seleccionar todos los registros
-	public LinkedList<dto.Funcionalidad> seleccionarFuncionalidades() {
-		LinkedList<dto.Funcionalidad> funcionalidades = new LinkedList<>(); 
-		String consulta = "SELECT * FROM funcionalidad";
+	public static LinkedList<Funcionalidad> seleccionarFuncionalidades() {
+		LinkedList<Funcionalidad> funcionalidades = new LinkedList<>();
 		try {
 			Statement stmt = conexion.createStatement();
-			ResultSet rset = stmt.executeQuery(consulta);
+			ResultSet rset = stmt.executeQuery(SELECT);
 			
 			while(rset.next()) {
-				dto.Funcionalidad funcionalidad = new dto.Funcionalidad();
+				Funcionalidad funcionalidad = new Funcionalidad();
 				funcionalidad.id = rset.getInt("id_funcionalidad");
 				funcionalidad.nombre = rset.getString("nombre");
 				funcionalidad.descripcion = rset.getString("descripcion");
@@ -52,11 +57,9 @@ public class Funcionalidad {
 	}
 	
 	// Actualizar un registro
-	public void actualizarFuncionalidad(int id, String nombre, String descripcion) {
-		String actualizar = "UPDATE funcionalidad SET nombre=?, descripcion=? WHERE id_funcionalidad=?";
-		
+	public static void actualizarFuncionalidad(int id, String nombre, String descripcion) {
 		try {
-			PreparedStatement prprdstmt = conexion.prepareStatement(actualizar);
+			PreparedStatement prprdstmt = conexion.prepareStatement(UPDATE);
 			
 			prprdstmt.setString(1, nombre);
 			prprdstmt.setString(2, descripcion);
@@ -70,11 +73,10 @@ public class Funcionalidad {
 	}
 	
 	// Eliminar un registro
-	public int eliminarFuncionalidad(int id) {
-		String eliminar = "DELETE FROM funcionalidad WHERE id_funcionalidad=?";
+	public static int eliminarFuncionalidad(int id) {
 		int filasEliminadas = 0;
 		try {
-			PreparedStatement prprdstmt = conexion.prepareStatement(eliminar);
+			PreparedStatement prprdstmt = conexion.prepareStatement(DELETE);
 			
 			prprdstmt.setInt(1, id);
 			
