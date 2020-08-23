@@ -3,15 +3,19 @@ package dto;
 import java.sql.Date;
 
 public class Persona {
-	public int id_persona;
-	public String documento;
-	public String apellido1; 
-	public String apellido2;
-	public String nombre1;
-	public String nombre2;
-	public Date fecha_nac; 
-	public String clave;
-	public String mail; 
-	public int id_rol;
+	private int id;
+	private String documento;
+	private String apellido1; 
+	private String apellido2;
+	private String nombre1;
+	private String nombre2;
+	private Date fecha_nac; 
+	private String clave;
+	private String mail; 
+	private int id_rol;
+	
+	public Persona() {
+		
+	}
 
 }
