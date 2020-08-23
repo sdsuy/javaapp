@@ -46,7 +46,7 @@ public class DAOPersona {
 				
 				while(rset.next()) {
 					Persona persona = new Persona();
-					persona.id_persona = rset.getInt("ID_PERSONA");
+					persona.id = rset.getInt("ID_PERSONA");
 					persona.documento = rset.getString("DOCUMENTO");
 					persona.apellido1 = rset.getString("APELLIDO1");
 					persona.apellido2 = rset.getString("APELLIDO2");
