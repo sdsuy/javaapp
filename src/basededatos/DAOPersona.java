@@ -13,12 +13,13 @@ import java.sql.Connection;
 
 public class DAOPersona {
 	private Connection conexion = DatabaseManager.getConexion();
+	private static final String INSERT_PERSONA = "INSERT INTO PERSONA (ID_PERSONA,DOCUMENTO,APELLIDO1,APELLIDO2,NOMBRE1,NOMBRE2,FECHA_NAC,CLAVE,MAIL,ID_ROL VALUES (?,?,?,?,?,?,?,?,?,?) ";
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	//insertar persona
 	public void nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int id_rol) {
-		String insert = "INSERT INTO PERSONA (ID_PERSONA, DOCUMENTO, APELLLIDO1, APELLIDO2, NOMBRE1, NBOMBRE2, FECHA_NAC, CLAVE, MAIL, ID_ROL) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		//String insert = "INSERT INTO PERSONA (ID_PERSONA, DOCUMENTO, APELLLIDO1, APELLIDO2, NOMBRE1, NBOMBRE2, FECHA_NAC, CLAVE, MAIL, ID_ROL) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		try {
-			PreparedStatement prepStatment = conexion.prepareStatement(insert);
+			PreparedStatement prepStatment = conexion.prepareStatement(INSERT_PERSONA);
 			prepStatment.setInt(1, id_persona);
 			prepStatment.setString(2, documento);
 			prepStatment.setString(3, apellido1);
@@ -77,6 +78,7 @@ public class DAOPersona {
 			return false;
 			
 		}
+		
 
 
 }
