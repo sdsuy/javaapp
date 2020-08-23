@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
+
+import dto.Persona;
+
 import java.sql.Connection;
 
-public class Persona {
+public class DAOPersona {
 	private Connection conexion = DatabaseManager.getConexion();
 	//insertar persona
 	public void nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int id_rol) {
@@ -34,15 +37,15 @@ public class Persona {
 		}
 	}
 	// Seleccionar todos los registros
-		public LinkedList<dto.Persona> seleccionarPersona() {
-			LinkedList<dto.Persona> personas = new LinkedList<>(); 
+		public LinkedList<Persona> seleccionarPersona() {
+			LinkedList<Persona> personas = new LinkedList<>(); 
 			String consulta = "SELECT * FROM PERSONA";
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery(consulta);
 				
 				while(rset.next()) {
-					dto.Persona persona = new dto.Persona();
+					Persona persona = new Persona();
 					persona.id_persona = rset.getInt("ID_PERSONA");
 					persona.documento = rset.getString("DOCUMENTO");
 					persona.apellido1 = rset.getString("APELLIDO1");
