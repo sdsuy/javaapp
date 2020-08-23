@@ -13,6 +13,7 @@ import java.sql.Connection;
 
 public class DAOPersona {
 	private Connection conexion = DatabaseManager.getConexion();
+	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	//insertar persona
 	public void nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int id_rol) {
 		String insert = "INSERT INTO PERSONA (ID_PERSONA, DOCUMENTO, APELLLIDO1, APELLIDO2, NOMBRE1, NBOMBRE2, FECHA_NAC, CLAVE, MAIL, ID_ROL) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -62,6 +63,19 @@ public class DAOPersona {
 				e.printStackTrace();
 			}
 			return personas;
+		}
+		public static boolean eliminarPersona(String id) {
+			try {
+				PreparedStatement pst =  DatabaseManager.getConexion().prepareStatement(DELETE_PERSONA);
+				pst.setString(1, id);
+				int retorno = pst.executeUpdate();
+				
+				return retorno > 0;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return false;
+			
 		}
 
 
