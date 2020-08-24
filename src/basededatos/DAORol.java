@@ -36,16 +36,16 @@ public class DAORol {
 	}
 	
 	// Seleccionar todos los registros
-		public LinkedList<dto.Rol> seleccionarRol() {
+		public LinkedList<dto.RolVO> seleccionarRol() {
 			
-			LinkedList<dto.Rol> roles = new LinkedList<>(); 
+			LinkedList<dto.RolVO> roles = new LinkedList<>(); 
 			
 			try {
 				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(SELECT);
 				
 				while(resultado.next()) {
-					dto.Rol rol = new dto.Rol();
+					dto.RolVO rol = new dto.RolVO();
 					rol.setId(resultado.getInt("id_funcionalidad"));
 					rol.setNombre(resultado.getString("nombre"));
 					rol.setDescripcion(resultado.getString("descripcion"));

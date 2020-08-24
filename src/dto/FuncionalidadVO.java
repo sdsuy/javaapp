@@ -7,13 +7,13 @@ public class FuncionalidadVO {
 	private int id;
 	private String nombre;
 	private String descripcion;
-	private LinkedList<Rol> roles;
+	private LinkedList<RolVO> roles;
 	
 	public FuncionalidadVO() {
 		super();
 	}
 
-	public FuncionalidadVO(int id, String nombre, String descripcion, LinkedList<Rol> roles) {
+	public FuncionalidadVO(int id, String nombre, String descripcion, LinkedList<RolVO> roles) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -45,11 +45,11 @@ public class FuncionalidadVO {
 		this.descripcion = descripcion;
 	}
 
-	public LinkedList<Rol> getRoles() {
+	public LinkedList<RolVO> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(LinkedList<Rol> roles) {
+	public void setRoles(LinkedList<RolVO> roles) {
 		this.roles = roles;
 	}
 
