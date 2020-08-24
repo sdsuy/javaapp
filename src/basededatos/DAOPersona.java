@@ -15,9 +15,9 @@ public class DAOPersona {
 	private Connection conexion = DatabaseManager.getConexion();
 	private static final String INSERT_PERSONA = "INSERT INTO PERSONA (ID_PERSONA,DOCUMENTO,APELLIDO1,APELLIDO2,NOMBRE1,NOMBRE2,FECHA_NAC,CLAVE,MAIL,ID_ROL VALUES (?,?,?,?,?,?,?,?,?,?) ";
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
+	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=? WHERE ID_PERSONA=?";
 	//insertar persona
 	public void nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int id_rol) {
-		//String insert = "INSERT INTO PERSONA (ID_PERSONA, DOCUMENTO, APELLLIDO1, APELLIDO2, NOMBRE1, NBOMBRE2, FECHA_NAC, CLAVE, MAIL, ID_ROL) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement prepStatment = conexion.prepareStatement(INSERT_PERSONA);
 			prepStatment.setInt(1, id_persona);
@@ -75,6 +75,30 @@ public class DAOPersona {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return false;
+			
+		}
+		public static boolean modificarPersona(Persona per) {
+			
+			try {
+				PreparedStatement pst = DatabaseManager.getConexion().prepareStatement(UPDATE_PERSONA);
+				pst.setString(1, per.getDocumento());
+				pst.setString(2, per.getApellido1());
+				pst.setString(3, per.getApellido2());
+				pst.setString(4, per.getNombre1());
+				pst.setString(5, per.getNombre2());
+				pst.setDate(6, per.getFecha_nac());
+				pst.setString(7, per.getClave());
+				pst.setString(8, per.getMail());
+				pst.setInt(9, per.getId_rol());
+				pst.setInt(10, per.getId());
+				
+				int retorno = pst.executeUpdate();
+				return retorno>0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			return false;
 			
 		}
