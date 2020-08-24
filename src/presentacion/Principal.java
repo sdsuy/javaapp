@@ -5,11 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import dto.PersonaVO;
+import dto.RolVO;
+
 import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal {
 
 	private JFrame frame;
+	private PersonaVO persona;
 
 	/**
 	 * Launch the application.
@@ -18,7 +25,13 @@ public class Principal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal window = new Principal();
+					// Creo un punto de ingreso como administrador saltando la pantalla de login
+					PersonaVO persona = new PersonaVO();
+					RolVO rol = new RolVO();
+					rol.setNombre("Administrador del sistema");
+					persona.setRol(rol);
+					// Inicio la Aplicacion principal con este usuario administrador de primer uso
+					Principal window = new Principal(persona);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +43,8 @@ public class Principal {
 	/**
 	 * Create the application.
 	 */
-	public Principal() {
+	public Principal(PersonaVO persona) {
+		this.persona = persona;
 		initialize();
 	}
 
@@ -48,6 +62,12 @@ public class Principal {
 		JMenu mnAdministrar = new JMenu("Administrar");
 		menuBar.add(mnAdministrar);
 		
+		mnAdministrar.setVisible(false);
+		// Si la persona logueada es administrador del sistema muestro el menu administrador
+		if(persona.getRol().getNombre().equals("Administrador del sistema")) {
+			mnAdministrar.setVisible(true);
+		}
+		
 		JMenuItem mntmPersona = new JMenuItem("Persona");
 		mnAdministrar.add(mntmPersona);
 		
@@ -55,6 +75,20 @@ public class Principal {
 		mnAdministrar.add(mntmRol);
 		
 		JMenuItem mntmFuncionalidad = new JMenuItem("Funcionalidad");
+		mntmFuncionalidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							Funcionalidad frame = new Funcionalidad();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		mnAdministrar.add(mntmFuncionalidad);
 		
 		JMenu mnHerramientas = new JMenu("Herramientas");
