@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
-import dto.Funcionalidad;
+import dto.FuncionalidadVO;
 
 public class DAOFuncionalidadTest {
 
@@ -22,7 +22,7 @@ public class DAOFuncionalidadTest {
 		DAOFuncionalidad.insertarFuncionalidad(1, "Primera", "");
 		DAOFuncionalidad.insertarFuncionalidad(2, "Segunda", "");
 		DAOFuncionalidad.insertarFuncionalidad(3, "Tercera", "");
-		LinkedList<Funcionalidad> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
+		LinkedList<FuncionalidadVO> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
 		DAOFuncionalidad.eliminarFuncionalidad(1);
 		DAOFuncionalidad.eliminarFuncionalidad(2);
 		DAOFuncionalidad.eliminarFuncionalidad(3);
@@ -33,7 +33,7 @@ public class DAOFuncionalidadTest {
 	public void testActualizarFuncionalidad() {
 		DAOFuncionalidad.insertarFuncionalidad(1, "Vieja", "");
 		DAOFuncionalidad.actualizarFuncionalidad(1, "Nueva", "");
-		LinkedList<Funcionalidad> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
+		LinkedList<FuncionalidadVO> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
 		DAOFuncionalidad.eliminarFuncionalidad(1);
 		assertTrue(funcionalidades.get(0).getNombre().equals("Nueva"));
 	}

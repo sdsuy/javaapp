@@ -2,18 +2,18 @@ package dto;
 
 import java.util.LinkedList;
 
-public class Funcionalidad {
+public class FuncionalidadVO {
 	
 	private int id;
 	private String nombre;
 	private String descripcion;
 	private LinkedList<Rol> roles;
 	
-	public Funcionalidad() {
+	public FuncionalidadVO() {
 		super();
 	}
 
-	public Funcionalidad(int id, String nombre, String descripcion, LinkedList<Rol> roles) {
+	public FuncionalidadVO(int id, String nombre, String descripcion, LinkedList<Rol> roles) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

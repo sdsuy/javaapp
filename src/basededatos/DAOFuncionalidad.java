@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-import dto.Funcionalidad;
+import dto.FuncionalidadVO;
 
 public class DAOFuncionalidad {
 	
@@ -37,14 +37,14 @@ public class DAOFuncionalidad {
 	}
 	
 	// Seleccionar todos los registros
-	public static LinkedList<Funcionalidad> seleccionarFuncionalidades() {
-		LinkedList<Funcionalidad> funcionalidades = new LinkedList<>();
+	public static LinkedList<FuncionalidadVO> seleccionarFuncionalidades() {
+		LinkedList<FuncionalidadVO> funcionalidades = new LinkedList<>();
 		try {
 			Statement stmt = conexion.createStatement();
 			ResultSet rset = stmt.executeQuery(SELECT);
 			
 			while(rset.next()) {
-				Funcionalidad funcionalidad = new Funcionalidad();
+				FuncionalidadVO funcionalidad = new FuncionalidadVO();
 				funcionalidad.setId(rset.getInt("id_funcionalidad"));
 				funcionalidad.setNombre(rset.getString("nombre"));
 				funcionalidad.setDescripcion(rset.getString("descripcion"));
