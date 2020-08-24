@@ -94,9 +94,7 @@ public class DAOPersona {
 				pst.setDate(6, per.getFecha_nac());
 				pst.setString(7, per.getClave());
 				pst.setString(8, per.getMail());
-				pst.setRolVO(9, per.getRol());
-				pst.setInt(10, per.getId());
-				
+				pst.setInt(9, per.getId());
 				int retorno = pst.executeUpdate();
 				return retorno>0;
 			} catch (SQLException e) {
