@@ -82,7 +82,7 @@ public class Persona extends JFrame {
 		passwordFieldpaswordClave.setBounds(125, 104, 107, 26);
 		contentPane.add(passwordFieldpaswordClave);
 		
-		JLabel lblContrasea = new JLabel("Contraseña");
+		JLabel lblContrasea = new JLabel("Clave");
 		lblContrasea.setBounds(125, 76, 96, 16);
 		contentPane.add(lblContrasea);
 		
@@ -107,7 +107,7 @@ public class Persona extends JFrame {
 		textMail.setBounds(125, 38, 107, 26);
 		contentPane.add(textMail);
 		
-		JLabel lblRepetirContrasea = new JLabel("Repetir Contraseña");
+		JLabel lblRepetirContrasea = new JLabel("Repetir Clave");
 		lblRepetirContrasea.setBounds(125, 140, 119, 16);
 		contentPane.add(lblRepetirContrasea);
 		
