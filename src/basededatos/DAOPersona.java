@@ -18,20 +18,21 @@ public class DAOPersona {
 	private static final String INSERT_PERSONA = "INSERT INTO PERSONA (ID_PERSONA,DOCUMENTO,APELLIDO1,APELLIDO2,NOMBRE1,NOMBRE2,FECHA_NAC,CLAVE,MAIL,ID_ROL VALUES (?,?,?,?,?,?,?,?,?,?) ";
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=?,ID_ROL=? WHERE ID_PERSONA=?";
+	private static final String ALL_PERSONA = "SELECT * FROM PERSONA WHERE ID_PERSONA";
 	//insertar persona
-	public static boolean nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int rol) {
+	public static boolean nuevaPersona(PersonaVO persona) {
 		try {
 			PreparedStatement prepStatment = conexion.prepareStatement(INSERT_PERSONA);
-			prepStatment.setInt(1, id_persona);
-			prepStatment.setString(2, documento);
-			prepStatment.setString(3, apellido1);
-			prepStatment.setString(4, apellido2);
-			prepStatment.setString(5, nombre1);
-			prepStatment.setString(6, nombre2);
-			prepStatment.setDate(7, fecha_nac);
-			prepStatment.setString(8, clave);
-			prepStatment.setString(9, mail);
-			prepStatment.setInt(10, rol);
+			prepStatment.setInt(1, persona.getId());
+			prepStatment.setString(2, persona.getDocumento());
+			prepStatment.setString(3, persona.getApellido1());
+			prepStatment.setString(4, persona.getApellido1());
+			prepStatment.setString(5, persona.getNombre1());
+			prepStatment.setString(6, persona.getNombre2());
+			prepStatment.setDate(7, persona.getFecha_nac());
+			prepStatment.setString(8, persona.getClave());
+			prepStatment.setString(9, persona.getMail());
+			prepStatment.setInt(10, persona.getRol().getId());
 			
 			int filasAgregadas = prepStatment.executeUpdate();
 			System.out.println("Se agrego filas "+ filasAgregadas + "registros nuevos");
@@ -45,10 +46,9 @@ public class DAOPersona {
 	// Seleccionar todos los registros
 		public static LinkedList<PersonaVO> seleccionarPersona() {
 			LinkedList<PersonaVO> personas = new LinkedList<>(); 
-			String consulta = "SELECT * FROM PERSONA";
 			try {
 				Statement stmt = conexion.createStatement();
-				ResultSet rset = stmt.executeQuery(consulta);
+				ResultSet rset = stmt.executeQuery(ALL_PERSONA);
 				
 				while(rset.next()) {
 					RolVO rol = new RolVO();
