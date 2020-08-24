@@ -35,7 +35,7 @@ public class DAOFuncionalidadTest {
 		DAOFuncionalidad.actualizarFuncionalidad(1, "Nueva", "");
 		LinkedList<Funcionalidad> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
 		DAOFuncionalidad.eliminarFuncionalidad(1);
-		assertTrue(funcionalidades.get(0).nombre.equals("Nueva"));
+		assertTrue(funcionalidades.get(0).getNombre().equals("Nueva"));
 	}
 	
 	@Test

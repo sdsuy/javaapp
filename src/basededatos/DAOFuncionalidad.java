@@ -45,9 +45,9 @@ public class DAOFuncionalidad {
 			
 			while(rset.next()) {
 				Funcionalidad funcionalidad = new Funcionalidad();
-				funcionalidad.id = rset.getInt("id_funcionalidad");
-				funcionalidad.nombre = rset.getString("nombre");
-				funcionalidad.descripcion = rset.getString("descripcion");
+				funcionalidad.setId(rset.getInt("id_funcionalidad"));
+				funcionalidad.setNombre(rset.getString("nombre"));
+				funcionalidad.setDescripcion(rset.getString("descripcion"));
 				funcionalidades.add(funcionalidad);
 			}
 		} catch (SQLException e) {
