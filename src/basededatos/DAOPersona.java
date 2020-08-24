@@ -17,7 +17,7 @@ public class DAOPersona {
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=? WHERE ID_PERSONA=?";
 	//insertar persona
-	public void nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int id_rol) {
+	public void nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int rol) {
 		try {
 			PreparedStatement prepStatment = conexion.prepareStatement(INSERT_PERSONA);
 			prepStatment.setInt(1, id_persona);
@@ -29,7 +29,7 @@ public class DAOPersona {
 			prepStatment.setDate(7, fecha_nac);
 			prepStatment.setString(8, clave);
 			prepStatment.setString(9, mail);
-			prepStatment.setInt(10, id_rol);
+			prepStatment.setInt(10, rol);
 			
 			int filasAgregadas = prepStatment.executeUpdate();
 			System.out.println("Se agrego filas "+ filasAgregadas + "registros nuevos");
