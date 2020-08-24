@@ -14,14 +14,14 @@ public class PersonaVO {
 	private Date fecha_nac; 
 	private String clave;
 	private String mail; 
-	private Rol rol;
+	private RolVO rol;
 	
 	public PersonaVO() {
 		
 	}
 
 	public PersonaVO(int id, String documento, String apellido1, String apellido2, String nombre1, String nombre2,
-			Date fecha_nac, String clave, String mail, Rol rol) {
+			Date fecha_nac, String clave, String mail, RolVO rol) {
 		super();
 		this.id = id;
 		this.documento = documento;
@@ -107,11 +107,11 @@ public class PersonaVO {
 		this.mail = mail;
 	}
 
-	public Rol getId_rol() {
+	public RolVO getRol() {
 		return rol;
 	}
 
-	public void setId_rol(Rol rol) {
+	public void setRol(RolVO rol) {
 		this.rol = rol;
 	}
 	
