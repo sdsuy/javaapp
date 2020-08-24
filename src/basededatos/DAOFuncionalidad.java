@@ -13,7 +13,7 @@ public class DAOFuncionalidad {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT = "INSERT INTO funcionalidad (id_funcionalidad, nombre, descripcion) VALUES (?,?,?)";
+	private static final String INSERT = "INSERT INTO funcionalidad (id_funcionalidad, nombre, descripcion) VALUES (seq_id_funcionalidad.nextval,?,?)";
 	private static final String SELECT = "SELECT * FROM funcionalidad";
 	private static final String UPDATE = "UPDATE funcionalidad SET nombre=?, descripcion=? WHERE id_funcionalidad=?";
 	private static final String DELETE = "DELETE FROM funcionalidad WHERE id_funcionalidad=?";
@@ -24,9 +24,9 @@ public class DAOFuncionalidad {
 		try {
 			PreparedStatement prprdstmt = conexion.prepareStatement(INSERT);
 			
-			prprdstmt.setInt(1, funcionalidad.getId());
-			prprdstmt.setString(2, funcionalidad.getNombre());
-			prprdstmt.setString(3, funcionalidad.getDescripcion());
+//			prprdstmt.setInt(1, funcionalidad.getId());
+			prprdstmt.setString(1, funcionalidad.getNombre());
+			prprdstmt.setString(2, funcionalidad.getDescripcion());
 			
 			filasIngresadas = prprdstmt.executeUpdate();
 //			System.out.println("Se agregó: " + filasIngresadas + " registro nuevo");
