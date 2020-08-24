@@ -2,6 +2,8 @@ package dto;
 
 import java.sql.Date;
 
+import presentacion.Rol;
+
 public class PersonaVO {
 	private int id;
 	private String documento;
@@ -12,14 +14,14 @@ public class PersonaVO {
 	private Date fecha_nac; 
 	private String clave;
 	private String mail; 
-	private int id_rol;
+	private Rol rol;
 	
 	public PersonaVO() {
 		
 	}
 
 	public PersonaVO(int id, String documento, String apellido1, String apellido2, String nombre1, String nombre2,
-			Date fecha_nac, String clave, String mail, int id_rol) {
+			Date fecha_nac, String clave, String mail, Rol rol) {
 		super();
 		this.id = id;
 		this.documento = documento;
@@ -30,7 +32,7 @@ public class PersonaVO {
 		this.fecha_nac = fecha_nac;
 		this.clave = clave;
 		this.mail = mail;
-		this.id_rol = id_rol;
+		this.rol = rol;
 	}
 
 	public int getId() {
@@ -105,12 +107,12 @@ public class PersonaVO {
 		this.mail = mail;
 	}
 
-	public int getId_rol() {
-		return id_rol;
+	public Rol getId_rol() {
+		return rol;
 	}
 
-	public void setId_rol(int id_rol) {
-		this.id_rol = id_rol;
+	public void setId_rol(Rol rol) {
+		this.rol = rol;
 	}
 	
 
