@@ -61,9 +61,9 @@ public class Funcionalidad extends JFrame {
 		lblDescripcion.setBounds(43, 93, 88, 16);
 		contentPane.add(lblDescripcion);
 		
-		JButton btnNewButton = new JButton("Alta");
-		btnNewButton.setBounds(241, 24, 117, 29);
-		contentPane.add(btnNewButton);
+		JButton btnAlta = new JButton("Alta");
+		btnAlta.setBounds(241, 24, 117, 29);
+		contentPane.add(btnAlta);
 		
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.setBounds(241, 65, 117, 29);
@@ -73,12 +73,12 @@ public class Funcionalidad extends JFrame {
 		btnModificar.setBounds(241, 108, 117, 29);
 		contentPane.add(btnModificar);
 		
-		JButton btnNewButton_2_1 = new JButton("Eliminar");
-		btnNewButton_2_1.setBounds(241, 150, 117, 29);
-		contentPane.add(btnNewButton_2_1);
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(241, 150, 117, 29);
+		contentPane.add(btnEliminar);
 		
-		JButton btnNewButton_2 = new JButton("Listar");
-		btnNewButton_2.setBounds(241, 192, 117, 29);
-		contentPane.add(btnNewButton_2);
+		JButton btnListar = new JButton("Listar");
+		btnListar.setBounds(241, 192, 117, 29);
+		contentPane.add(btnListar);
 	}
 }
