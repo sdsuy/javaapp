@@ -6,15 +6,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.FuncionalidadBO;
+import dto.FuncionalidadVO;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Funcionalidad extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textNombre;
-	private JTextField textDescripcion;
+	private JTextField txtNombre;
+	private JTextField txtDescripcion;
 
 	/**
 	 * Launch the application.
@@ -36,22 +42,22 @@ public class Funcionalidad extends JFrame {
 	 * Create the frame.
 	 */
 	public Funcionalidad() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textNombre = new JTextField();
-		textNombre.setBounds(18, 49, 130, 26);
-		contentPane.add(textNombre);
-		textNombre.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setBounds(18, 49, 130, 26);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
 		
-		textDescripcion = new JTextField();
-		textDescripcion.setColumns(10);
-		textDescripcion.setBounds(18, 111, 130, 26);
-		contentPane.add(textDescripcion);
+		txtDescripcion = new JTextField();
+		txtDescripcion.setColumns(10);
+		txtDescripcion.setBounds(18, 111, 130, 26);
+		contentPane.add(txtDescripcion);
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
 		lblNewLabel.setBounds(43, 29, 61, 16);
@@ -62,6 +68,15 @@ public class Funcionalidad extends JFrame {
 		contentPane.add(lblDescripcion);
 		
 		JButton btnAlta = new JButton("Alta");
+		btnAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FuncionalidadBO funcionalidad = new FuncionalidadBO();
+				FuncionalidadVO funaux = new FuncionalidadVO();
+				funaux.setNombre(txtNombre.getText());
+				funaux.setDescripcion(txtDescripcion.getText());
+				funcionalidad.agregarFuncionalidad(funaux);
+			}
+		});
 		btnAlta.setBounds(241, 24, 117, 29);
 		contentPane.add(btnAlta);
 		
