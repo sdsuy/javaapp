@@ -19,21 +19,21 @@ public class DAOFuncionalidad {
 	private static final String DELETE = "DELETE FROM funcionalidad WHERE id_funcionalidad=?";
 	
 	// Insertar registro
-	public static int insertarFuncionalidad(int id, String nombre, String descripcion) {
+	public static boolean insertarFuncionalidad(FuncionalidadVO funcionalidad) {
 		int filasIngresadas = 0;
 		try {
 			PreparedStatement prprdstmt = conexion.prepareStatement(INSERT);
 			
-			prprdstmt.setInt(1, id);
-			prprdstmt.setString(2, nombre);
-			prprdstmt.setString(3, descripcion);
+			prprdstmt.setInt(1, funcionalidad.getId());
+			prprdstmt.setString(2, funcionalidad.getNombre());
+			prprdstmt.setString(3, funcionalidad.getDescripcion());
 			
 			filasIngresadas = prprdstmt.executeUpdate();
-			System.out.println("Se agregó: " + filasIngresadas + " registro nuevo");
+//			System.out.println("Se agregó: " + filasIngresadas + " registro nuevo");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return filasIngresadas;
+		return filasIngresadas > 0;
 	}
 	
 	// Seleccionar todos los registros
@@ -57,23 +57,25 @@ public class DAOFuncionalidad {
 	}
 	
 	// Actualizar un registro
-	public static void actualizarFuncionalidad(int id, String nombre, String descripcion) {
+	public static boolean actualizarFuncionalidad(FuncionalidadVO funcionalidad) {
+		int filasActualizadas = 0;
 		try {
 			PreparedStatement prprdstmt = conexion.prepareStatement(UPDATE);
 			
-			prprdstmt.setString(1, nombre);
-			prprdstmt.setString(2, descripcion);
-			prprdstmt.setInt(3, id);
+			prprdstmt.setString(1, funcionalidad.getNombre());
+			prprdstmt.setString(2, funcionalidad.getDescripcion());
+			prprdstmt.setInt(3, funcionalidad.getId());
 			
-			int filasActualizadas = prprdstmt.executeUpdate();
-			System.out.println("Se actualizó: " + filasActualizadas + " registro");
+			filasActualizadas = prprdstmt.executeUpdate();
+//			System.out.println("Se actualizó: " + filasActualizadas + " registro");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return filasActualizadas > 0;
 	}
 	
 	// Eliminar un registro
-	public static int eliminarFuncionalidad(int id) {
+	public static boolean eliminarFuncionalidad(int id) {
 		int filasEliminadas = 0;
 		try {
 			PreparedStatement prprdstmt = conexion.prepareStatement(DELETE);
@@ -81,11 +83,11 @@ public class DAOFuncionalidad {
 			prprdstmt.setInt(1, id);
 			
 			filasEliminadas = prprdstmt.executeUpdate();
-			System.out.println("Se eliminó: " + filasEliminadas + " registro");
+//			System.out.println("Se eliminó: " + filasEliminadas + " registro");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return filasEliminadas;
+		return filasEliminadas > 0;
 	}
 
 }
