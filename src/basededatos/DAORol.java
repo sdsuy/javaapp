@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
+import dto.RolVO;
+
 public class DAORol {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
@@ -18,34 +20,35 @@ public class DAORol {
 	
 	//insertar rol
 	
-	public void insertarRol(int id, String nombre, String descripcion) {
-		
+	public static boolean insertarRol(RolVO rol) {
+		int filasInsert = 0;
 		try {
 			
 			PreparedStatement sentencia = conexion.prepareStatement(INSERT);
 			
-			sentencia.setInt(1, id);
-			sentencia.setString(2, nombre);
-			sentencia.setString(3, descripcion);
+			sentencia.setInt(1, rol.getId());
+			sentencia.setString(2, rol.getNombre());
+			sentencia.setString(3, rol.getDescripcion());
 			
-			int filasInsert = sentencia.executeUpdate();
-			System.out.println("Se agregaron: " + filasInsert + "registros nuevos");
+			filasInsert = sentencia.executeUpdate();
+//			System.out.println("Se agregaron: " + filasInsert + "registros nuevos");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return filasInsert > 0;
 	}
 	
 	// Seleccionar todos los registros
-		public LinkedList<dto.RolVO> seleccionarRol() {
+		public static LinkedList<RolVO> seleccionarRoles() {
 			
-			LinkedList<dto.RolVO> roles = new LinkedList<>(); 
+			LinkedList<RolVO> roles = new LinkedList<>(); 
 			
 			try {
 				Statement sentencia = conexion.createStatement();
 				ResultSet resultado = sentencia.executeQuery(SELECT);
 				
 				while(resultado.next()) {
-					dto.RolVO rol = new dto.RolVO();
+					RolVO rol = new RolVO();
 					rol.setId(resultado.getInt("id_funcionalidad"));
 					rol.setNombre(resultado.getString("nombre"));
 					rol.setDescripcion(resultado.getString("descripcion"));
@@ -58,28 +61,28 @@ public class DAORol {
 		}
 		
 		//Actualizar un regstro
-		public static void actualizarRol(int id, String nombre, String descripcion) {
-			
+		public static boolean actualizarRol(RolVO rol) {
+			int filasUpdate = 0;
 			try {
 				PreparedStatement sentencia = conexion.prepareStatement(UPDATE);
 				
-				sentencia.setString(1, nombre);
-				sentencia.setString(2, descripcion);
-				sentencia.setInt(3, id);
+				sentencia.setString(1, rol.getNombre());
+				sentencia.setString(2, rol.getDescripcion());
+				sentencia.setInt(3, rol.getId());
 				
-				int filasUpdate = sentencia.executeUpdate();
+				filasUpdate = sentencia.executeUpdate();
 				
-				System.out.println("Se actualizaron: " + filasUpdate + " registros");
+//				System.out.println("Se actualizaron: " + filasUpdate + " registros");
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		
-			
+			return filasUpdate > 0;
 		}
 		
 		// Eliminar un registro
-		public static int eliminarRol(int id) {
+		public static boolean eliminarRol(int id) {
 			
 			int filasEliminadas = 0;
 			
@@ -95,7 +98,7 @@ public class DAORol {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return filasEliminadas;
+			return filasEliminadas > 0;
 		}
 	
 	
