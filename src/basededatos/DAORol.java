@@ -46,9 +46,9 @@ public class DAORol {
 				
 				while(resultado.next()) {
 					dto.Rol rol = new dto.Rol();
-					rol.id = resultado.getInt("id_funcionalidad");
-					rol.nombre = resultado.getString("nombre");
-					rol.descripcion = resultado.getString("descripcion");
+					rol.setId(resultado.getInt("id_funcionalidad"));
+					rol.setNombre(resultado.getString("nombre"));
+					rol.setDescripcion(resultado.getString("descripcion"));
 					roles.add(rol);
 				}
 			} catch (SQLException e) {

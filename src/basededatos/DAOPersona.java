@@ -48,16 +48,16 @@ public class DAOPersona {
 				
 				while(rset.next()) {
 					Persona persona = new Persona();
-					persona.id = rset.getInt("ID_PERSONA");
-					persona.documento = rset.getString("DOCUMENTO");
-					persona.apellido1 = rset.getString("APELLIDO1");
-					persona.apellido2 = rset.getString("APELLIDO2");
-					persona.nombre1 = rset.getString("NOMBRE1");
-					persona.nombre2 = rset.getString("NOMBRE2");
-					persona.fecha_nac = rset.getDate("FECHA_NAC");
-					persona.clave = rset.getString("CLAVE");
-					persona.mail = rset.getString("MAIL");
-					persona.id_rol = rset.getInt("ID_ROL");
+					persona.setId(rset.getInt("ID_PERSONA"));
+					persona.setDocumento(rset.getString("DOCUMENTO"));
+					persona.setApellido1(rset.getString("APELLIDO1"));
+					persona.setApellido2(rset.getString("APELLIDO2"));
+					persona.setNombre1(rset.getString("NOMBRE1"));
+					persona.setNombre2(rset.getString("NOMBRE2"));
+					persona.setFecha_nac(rset.getDate("FECHA_NAC"));
+					persona.setClave(rset.getString("CLAVE"));
+					persona.setMail(rset.getString("MAIL"));
+					persona.setId_rol(rset.getInt("ID_ROL"));
 					personas.add(persona);
 				}
 			} catch (SQLException e) {
