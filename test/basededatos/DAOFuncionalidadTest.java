@@ -12,16 +12,32 @@ public class DAOFuncionalidadTest {
 
 	@Test
 	public void testInsertarFuncionalidad() {
-		int filasIngresadas = DAOFuncionalidad.insertarFuncionalidad(1, "Nueva", "");
+		FuncionalidadVO funcionalidad = new FuncionalidadVO();
+		funcionalidad.setId(1);
+		funcionalidad.setNombre("Nueva");
+		funcionalidad.setDescripcion("");
+		boolean filasIngresadas = DAOFuncionalidad.insertarFuncionalidad(funcionalidad);
 		DAOFuncionalidad.eliminarFuncionalidad(1);
-		assertEquals(1, filasIngresadas);
+		assertTrue(filasIngresadas);
 	}
 
 	@Test
 	public void testSeleccionarFuncionalidades() {
-		DAOFuncionalidad.insertarFuncionalidad(1, "Primera", "");
-		DAOFuncionalidad.insertarFuncionalidad(2, "Segunda", "");
-		DAOFuncionalidad.insertarFuncionalidad(3, "Tercera", "");
+		FuncionalidadVO funcionalidad1 = new FuncionalidadVO();
+		funcionalidad1.setId(1);
+		funcionalidad1.setNombre("Primera");
+		funcionalidad1.setDescripcion("");
+		FuncionalidadVO funcionalidad2 = new FuncionalidadVO();
+		funcionalidad2.setId(2);
+		funcionalidad2.setNombre("Segunda");
+		funcionalidad2.setDescripcion("");
+		FuncionalidadVO funcionalidad3 = new FuncionalidadVO();
+		funcionalidad3.setId(3);
+		funcionalidad3.setNombre("Tercera");
+		funcionalidad3.setDescripcion("");
+		DAOFuncionalidad.insertarFuncionalidad(funcionalidad1);
+		DAOFuncionalidad.insertarFuncionalidad(funcionalidad2);
+		DAOFuncionalidad.insertarFuncionalidad(funcionalidad3);
 		LinkedList<FuncionalidadVO> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
 		DAOFuncionalidad.eliminarFuncionalidad(1);
 		DAOFuncionalidad.eliminarFuncionalidad(2);
@@ -31,8 +47,13 @@ public class DAOFuncionalidadTest {
 
 	@Test
 	public void testActualizarFuncionalidad() {
-		DAOFuncionalidad.insertarFuncionalidad(1, "Vieja", "");
-		DAOFuncionalidad.actualizarFuncionalidad(1, "Nueva", "");
+		FuncionalidadVO funcionalidad = new FuncionalidadVO();
+		funcionalidad.setId(1);
+		funcionalidad.setNombre("Vieja");
+		funcionalidad.setDescripcion("");
+		DAOFuncionalidad.insertarFuncionalidad(funcionalidad);
+		funcionalidad.setNombre("Nueva");
+		DAOFuncionalidad.actualizarFuncionalidad(funcionalidad);
 		LinkedList<FuncionalidadVO> funcionalidades = DAOFuncionalidad.seleccionarFuncionalidades();
 		DAOFuncionalidad.eliminarFuncionalidad(1);
 		assertTrue(funcionalidades.get(0).getNombre().equals("Nueva"));
@@ -40,9 +61,13 @@ public class DAOFuncionalidadTest {
 	
 	@Test
 	public void testEliminarFuncionalidad() {
-		DAOFuncionalidad.insertarFuncionalidad(1, "Borrarme", "");
-		int filasEliminadas = DAOFuncionalidad.eliminarFuncionalidad(1);
-		assertEquals(1, filasEliminadas);
+		FuncionalidadVO funcionalidad = new FuncionalidadVO();
+		funcionalidad.setId(1);
+		funcionalidad.setNombre("Borrarme");
+		funcionalidad.setDescripcion("");
+		DAOFuncionalidad.insertarFuncionalidad(funcionalidad);
+		boolean filasEliminadas = DAOFuncionalidad.eliminarFuncionalidad(1);
+		assertTrue(filasEliminadas);
 	}
 
 }
