@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import dto.PersonaVO;
+import dto.RolVO;
+import presentacion.Rol;
 
 import java.sql.Connection;
 
@@ -47,6 +49,7 @@ public class DAOPersona {
 				ResultSet rset = stmt.executeQuery(consulta);
 				
 				while(rset.next()) {
+					RolVO rol = new RolVO();
 					PersonaVO persona = new PersonaVO();
 					persona.setId(rset.getInt("ID_PERSONA"));
 					persona.setDocumento(rset.getString("DOCUMENTO"));
@@ -57,7 +60,8 @@ public class DAOPersona {
 					persona.setFecha_nac(rset.getDate("FECHA_NAC"));
 					persona.setClave(rset.getString("CLAVE"));
 					persona.setMail(rset.getString("MAIL"));
-					persona.setId_rol(rset.getInt("ID_ROL"));
+					rol.setId(rset.getInt("ID_Rol"));
+					persona.setRol(rol);
 					personas.add(persona);
 				}
 			} catch (SQLException e) {
@@ -90,7 +94,7 @@ public class DAOPersona {
 				pst.setDate(6, per.getFecha_nac());
 				pst.setString(7, per.getClave());
 				pst.setString(8, per.getMail());
-				pst.setInt(9, per.getId_rol());
+				pst.setRolVO(9, per.getRol());
 				pst.setInt(10, per.getId());
 				
 				int retorno = pst.executeUpdate();
