@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-import dto.Persona;
+import dto.PersonaVO;
 
 import java.sql.Connection;
 
@@ -39,15 +39,15 @@ public class DAOPersona {
 		}
 	}
 	// Seleccionar todos los registros
-		public LinkedList<Persona> seleccionarPersona() {
-			LinkedList<Persona> personas = new LinkedList<>(); 
+		public LinkedList<PersonaVO> seleccionarPersona() {
+			LinkedList<PersonaVO> personas = new LinkedList<>(); 
 			String consulta = "SELECT * FROM PERSONA";
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery(consulta);
 				
 				while(rset.next()) {
-					Persona persona = new Persona();
+					PersonaVO persona = new PersonaVO();
 					persona.setId(rset.getInt("ID_PERSONA"));
 					persona.setDocumento(rset.getString("DOCUMENTO"));
 					persona.setApellido1(rset.getString("APELLIDO1"));
@@ -78,7 +78,7 @@ public class DAOPersona {
 			return false;
 			
 		}
-		public static boolean modificarPersona(Persona per) {
+		public static boolean modificarPersona(PersonaVO per) {
 			
 			try {
 				PreparedStatement pst = DatabaseManager.getConexion().prepareStatement(UPDATE_PERSONA);

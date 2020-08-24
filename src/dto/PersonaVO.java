@@ -2,7 +2,7 @@ package dto;
 
 import java.sql.Date;
 
-public class Persona {
+public class PersonaVO {
 	private int id;
 	private String documento;
 	private String apellido1; 
@@ -14,11 +14,11 @@ public class Persona {
 	private String mail; 
 	private int id_rol;
 	
-	public Persona() {
+	public PersonaVO() {
 		
 	}
 
-	public Persona(int id, String documento, String apellido1, String apellido2, String nombre1, String nombre2,
+	public PersonaVO(int id, String documento, String apellido1, String apellido2, String nombre1, String nombre2,
 			Date fecha_nac, String clave, String mail, int id_rol) {
 		super();
 		this.id = id;
