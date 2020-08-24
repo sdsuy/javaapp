@@ -18,6 +18,7 @@ public class DAOPersona {
 	private static final String INSERT_PERSONA = "INSERT INTO PERSONA (ID_PERSONA,DOCUMENTO,APELLIDO1,APELLIDO2,NOMBRE1,NOMBRE2,FECHA_NAC,CLAVE,MAIL,ID_ROL VALUES (?,?,?,?,?,?,?,?,?,?) ";
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=?,ID_ROL=? WHERE ID_PERSONA=?";
+	private static final String ALL_PERSONA = "SELECT * FROM PERSONA WHERE ID_PERSONA";
 	//insertar persona
 	public static boolean nuevaPersona(int id_persona,String documento, String apellido1, String apellido2, String nombre1, String nombre2, Date fecha_nac, String clave, String mail, int rol) {
 		try {
@@ -45,10 +46,9 @@ public class DAOPersona {
 	// Seleccionar todos los registros
 		public static LinkedList<PersonaVO> seleccionarPersona() {
 			LinkedList<PersonaVO> personas = new LinkedList<>(); 
-			String consulta = "SELECT * FROM PERSONA";
 			try {
 				Statement stmt = conexion.createStatement();
-				ResultSet rset = stmt.executeQuery(consulta);
+				ResultSet rset = stmt.executeQuery(ALL_PERSONA);
 				
 				while(rset.next()) {
 					RolVO rol = new RolVO();
