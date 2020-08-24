@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-public class Rol {
+public class DAORol {
 	
 	private Connection conexion = DatabaseManager.getConexion();
 	
@@ -40,9 +40,9 @@ public class Rol {
 				
 				while(rset.next()) {
 					dto.Rol rol = new dto.Rol();
-					rol.id = rset.getInt("id_funcionalidad");
-					rol.nombre = rset.getString("nombre");
-					rol.descripcion = rset.getString("descripcion");
+					rol.setId(rset.getInt("id_funcionalidad"));
+					rol.setNombre(rset.getString("nombre"));
+					rol.setDescripcion(rset.getString("descripcion"));
 					roles.add(rol);
 				}
 			} catch (SQLException e) {
