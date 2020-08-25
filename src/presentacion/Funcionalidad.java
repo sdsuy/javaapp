@@ -20,6 +20,7 @@ public class Funcionalidad extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtDescripcion;
+	FuncionalidadBO funcionalidad = new FuncionalidadBO();
 
 	/**
 	 * Launch the application.
@@ -69,7 +70,6 @@ public class Funcionalidad extends JFrame {
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FuncionalidadBO funcionalidad = new FuncionalidadBO();
 				FuncionalidadVO funaux = new FuncionalidadVO();
 				funaux.setNombre(txtNombre.getText());
 				funaux.setDescripcion(txtDescripcion.getText());
@@ -80,10 +80,28 @@ public class Funcionalidad extends JFrame {
 		contentPane.add(btnAlta);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FuncionalidadVO funaux = new FuncionalidadVO();
+				funaux.setNombre(txtNombre.getText());
+				// primero la busco por el nombre
+				funcionalidad.buscarFuncionalidad(funaux.getNombre());
+				// segundo recupero la funcionalidad encontrada
+				funaux = funcionalidad.getFuncionalidad();
+				// tercero cambio y actualizo el valor de descripción por el nuevo
+				funaux.setDescripcion(txtDescripcion.getText());
+				funcionalidad.actualizarFuncionalidad(funaux);
+			}
+		});
 		btnModificar.setBounds(241, 108, 117, 29);
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
+			}
+		});
 		btnEliminar.setBounds(241, 150, 117, 29);
 		contentPane.add(btnEliminar);
 		
@@ -92,6 +110,13 @@ public class Funcionalidad extends JFrame {
 		contentPane.add(btnListar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre = txtNombre.getText();
+				funcionalidad.buscarFuncionalidad(nombre);
+				txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
+			}
+		});
 		btnBuscar.setBounds(241, 64, 117, 29);
 		contentPane.add(btnBuscar);
 	}
