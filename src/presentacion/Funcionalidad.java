@@ -100,6 +100,10 @@ public class Funcionalidad extends JFrame {
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String nombre = txtNombre.getText();
+				// primero la busco por el nombre
+				funcionalidad.buscarFuncionalidad(nombre);
+				// luego la elimino
 				funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
 			}
 		});
@@ -114,7 +118,9 @@ public class Funcionalidad extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = txtNombre.getText();
+				// primero la busco por el nombre
 				funcionalidad.buscarFuncionalidad(nombre);
+				// luego seteo la descripción
 				txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
 			}
 		});
