@@ -23,6 +23,7 @@ public class Rol extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNombre;
 	private JTextField textDescripcion;
+	private RolBO nRol = new RolBO();
 
 	/**
 	 * Launch the application.
@@ -74,10 +75,24 @@ public class Rol extends JFrame {
 		contentPane.add(listFuncionalidades);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RolVO rol = new RolVO();
+				rol.setNombre(textNombre.getText());//Busco por nombre
+				rol = nRol.getRol();//Recupero el rol encontrado 
+				rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
+				nRol.actualizarRol(rol);
+			}
+		});
 		btnModificar.setBounds(6, 193, 117, 29);
 		contentPane.add(btnModificar);
 		
 		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnListar.setBounds(18, 228, 172, 29);
 		contentPane.add(btnListar);
 		
@@ -97,10 +112,22 @@ public class Rol extends JFrame {
 		contentPane.add(btnAlta);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nRol.eliminarRol(nRol.getRol().getId());
+			}
+		});
 		btnEliminar.setBounds(117, 152, 117, 29);
 		contentPane.add(btnEliminar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre =textNombre.getText();
+				nRol.buscarRol(nombre);
+				textDescripcion.setText(nRol.getRol().getDescripcion());
+			}
+		});
 		btnBuscar.setBounds(112, 193, 110, 29);
 		contentPane.add(btnBuscar);
 	}
