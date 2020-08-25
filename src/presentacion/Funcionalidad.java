@@ -20,7 +20,8 @@ public class Funcionalidad extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtDescripcion;
-	FuncionalidadBO funcionalidad = new FuncionalidadBO();
+	
+	private FuncionalidadBO funcionalidad = new FuncionalidadBO();
 
 	/**
 	 * Launch the application.
