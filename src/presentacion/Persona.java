@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import basededatos.DAOPersona;
 import dto.PersonaBO;
 import dto.PersonaVO;
 import dto.RolVO;
@@ -153,9 +154,23 @@ public class Persona extends JFrame {
 		btnAlta.setBounds(271, 38, 117, 29);
 		contentPane.add(btnAlta);
 		
-		JButton btnBaja = new JButton("Buscar");
-		btnBaja.setBounds(271, 76, 117, 29);
-		contentPane.add(btnBaja);
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PersonaVO per = new PersonaVO();
+				String doc = textDocumento.getText();
+				per = DAOPersona.buscarPersona(doc);
+				textDocumento.setText(per.getDocumento());
+				textApellido1.setText(per.getApellido1());
+				textApellido2.setText(per.getApellido2());
+				textNombre1.setText(per.getNombre1());
+				textNombre2.setText(per.getNombre2());
+				textMail.setText(per.getMail());
+	
+			}
+		});
+		btnBuscar.setBounds(271, 76, 117, 29);
+		contentPane.add(btnBuscar);
 		
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(271, 109, 117, 29);
