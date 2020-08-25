@@ -7,6 +7,7 @@ import basededatos.DAOFuncionalidad;
 public class FuncionalidadBO {
 	
 	private LinkedList<FuncionalidadVO> funcionalidades;
+	private FuncionalidadVO funcionalidad;
 	
 	/**
 	 * 
@@ -54,8 +55,23 @@ public class FuncionalidadBO {
 		return DAOFuncionalidad.eliminarFuncionalidad(id);
 	}
 	
-	public FuncionalidadVO buscarFuncionalidad(String nombre) {
-		return DAOFuncionalidad.buscarFuncionalidad(nombre);
+	/**
+	 * 
+	 * Busco una funcionalidad
+	 * @param nombre
+	 * @return
+	 */
+	public void buscarFuncionalidad(String nombre) {
+		funcionalidad = DAOFuncionalidad.buscarFuncionalidad(nombre);
+	}
+
+	/**
+	 * 
+	 * Getter de funcionalidad
+	 * @return
+	 */
+	public FuncionalidadVO getFuncionalidad() {
+		return funcionalidad;
 	}
 
 	/**
