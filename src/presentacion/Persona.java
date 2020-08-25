@@ -32,6 +32,7 @@ public class Persona extends JFrame {
 	private JTextField textMail;
 	private JTextField textDocumento;
 	PersonaBO persona = new PersonaBO();
+	private JTextField textID;
 
 	/**
 	 * Launch the application.
@@ -169,19 +170,25 @@ public class Persona extends JFrame {
 	
 			}
 		});
-		btnBuscar.setBounds(271, 76, 117, 29);
+		btnBuscar.setBounds(271, 71, 117, 29);
 		contentPane.add(btnBuscar);
 		
 		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(271, 109, 117, 29);
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PersonaVO peraux = new PersonaVO();
+				peraux.setId(Integer.parseInt(textID.getText()));
+			}
+		});
+		btnModificar.setBounds(271, 244, 117, 29);
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(271, 140, 117, 29);
+		btnEliminar.setBounds(271, 109, 117, 29);
 		contentPane.add(btnEliminar);
 		
 		JButton btnListar = new JButton("Listar");
-		btnListar.setBounds(271, 178, 117, 29);
+		btnListar.setBounds(271, 140, 117, 29);
 		contentPane.add(btnListar);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Rol");
@@ -192,5 +199,14 @@ public class Persona extends JFrame {
 		textDocumento.setColumns(10);
 		textDocumento.setBounds(6, 244, 107, 26);
 		contentPane.add(textDocumento);
+		
+		textID = new JTextField();
+		textID.setColumns(10);
+		textID.setBounds(281, 206, 107, 26);
+		contentPane.add(textID);
+		
+		JLabel lblNewLabel_2 = new JLabel("ID");
+		lblNewLabel_2.setBounds(281, 183, 61, 16);
+		contentPane.add(lblNewLabel_2);
 	}
 }
