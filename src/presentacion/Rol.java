@@ -107,6 +107,11 @@ public class Rol extends JFrame {
 		contentPane.add(btnAlta);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nRol.eliminarRol(nRol.getRol().getId());
+			}
+		});
 		btnEliminar.setBounds(117, 152, 117, 29);
 		contentPane.add(btnEliminar);
 		
