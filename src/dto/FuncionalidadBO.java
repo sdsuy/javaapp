@@ -53,6 +53,10 @@ public class FuncionalidadBO {
 	public boolean eliminarFuncionalidad(int id) {
 		return DAOFuncionalidad.eliminarFuncionalidad(id);
 	}
+	
+	public FuncionalidadVO buscarFuncionalidad(String nombre) {
+		return DAOFuncionalidad.buscarFuncionalidad(nombre);
+	}
 
 	/**
 	 * 
@@ -62,7 +66,5 @@ public class FuncionalidadBO {
 	public LinkedList<FuncionalidadVO> getFuncionalidades() {
 		return funcionalidades;
 	}
-	
-	
 
 }
