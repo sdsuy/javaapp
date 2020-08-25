@@ -74,7 +74,7 @@ public class DAOPersona {
 		public static boolean eliminarPersona(int id) {
 			try {
 				PreparedStatement pst =  DatabaseManager.getConexion().prepareStatement(DELETE_PERSONA);
-				pst.setString(1, id);
+				pst.setInt(1, id);
 				int retorno = pst.executeUpdate();
 				
 				return retorno > 0;
