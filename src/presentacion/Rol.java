@@ -88,6 +88,11 @@ public class Rol extends JFrame {
 		contentPane.add(btnModificar);
 		
 		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnListar.setBounds(18, 228, 172, 29);
 		contentPane.add(btnListar);
 		
