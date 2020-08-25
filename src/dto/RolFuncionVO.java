@@ -7,6 +7,10 @@ public class RolFuncionVO {
 	private int idFuncion;
 	
 	
+	public RolFuncionVO() {
+		super();
+	}
+	
 	public RolFuncionVO(int idRolFuncion, int idRol, int idFuncion) {
 		this.idRolFuncion = idRolFuncion;
 		this.idRol = idRol;
