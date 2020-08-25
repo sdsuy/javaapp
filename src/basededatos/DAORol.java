@@ -28,9 +28,9 @@ public class DAORol {
 			
 			PreparedStatement sentencia = conexion.prepareStatement(INSERT);
 			
-			sentencia.setInt(1, rol.getId());
-			sentencia.setString(2, rol.getNombre());
-			sentencia.setString(3, rol.getDescripcion());
+			
+			sentencia.setString(1, rol.getNombre());
+			sentencia.setString(2, rol.getDescripcion());
 			
 			filasInsert = sentencia.executeUpdate();
 //			System.out.println("Se agregaron: " + filasInsert + "registros nuevos");
