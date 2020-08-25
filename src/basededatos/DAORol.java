@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
+import dto.FuncionalidadVO;
 import dto.RolVO;
 
 public class DAORol {
@@ -17,6 +18,7 @@ public class DAORol {
 	private static final String SELECT = "SELECT * FROM ROL";
 	private static final String UPDATE = "UPDATE ROL SET nombre=?, descripcion=? WHERE ID_ROL=?";
 	private static final String DELETE = "DELETE FROM ROL WHERE ID_ROL=?";
+	private static final String FIND = "SELECT * FROM ROL WHERE NOMBRE=?";
 	
 	//insertar rol
 	
@@ -99,6 +101,29 @@ public class DAORol {
 				e.printStackTrace();
 			}
 			return filasEliminadas > 0;
+		}
+		
+		//Buscar un registro
+		
+		public static RolVO buscarRol(String nombre) {
+			RolVO rol = new RolVO();
+			try {
+				PreparedStatement sentencia = conexion.prepareStatement(FIND);
+				
+				sentencia.setString(1, nombre);
+				
+				ResultSet resultado = sentencia.executeQuery();
+				
+				
+				if(resultado.next()) {
+					rol.setId(resultado.getInt("id_funcionalidad"));
+					rol.setNombre(resultado.getString("nombre"));
+					rol.setDescripcion(resultado.getString("descripcion"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return rol;
 		}
 	
 	
