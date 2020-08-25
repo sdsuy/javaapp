@@ -23,6 +23,7 @@ public class Rol extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNombre;
 	private JTextField textDescripcion;
+	private RolBO nRol = new RolBO();
 
 	/**
 	 * Launch the application.
@@ -74,6 +75,15 @@ public class Rol extends JFrame {
 		contentPane.add(listFuncionalidades);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RolVO rol = new RolVO();
+				rol.setNombre(textNombre.getText());//Busco por nombre
+				rol = nRol.getRol();//Recupero el rol encontrado 
+				rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
+				nRol.actualizarRol(rol);
+			}
+		});
 		btnModificar.setBounds(6, 193, 117, 29);
 		contentPane.add(btnModificar);
 		
