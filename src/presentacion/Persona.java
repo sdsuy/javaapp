@@ -120,23 +120,27 @@ public class Persona extends JFrame {
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String repClave ="";
-				PersonaBO persona = new PersonaBO();
-				PersonaVO peraux = new PersonaVO();
-				peraux.setApellido1(textApellido1.getText());
-				peraux.setApellido2(textApellido2.getText());
-				peraux.setNombre1(textApellido1.getText());
-				peraux.setNombre2(textNombre2.getText());
-				peraux.setMail(textMail.getText());
-				peraux.setClave(passwordFieldpaswordClave.getText());
-				repClave = passwordFieldRepetirClave.getText();
-				if(repClave.equals(passwordFieldpaswordClave)) {
-					persona.agregarPersona(peraux);
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
-				}
-				
+				if(textApellido1.getText().isEmpty() || textApellido2.getText().isEmpty() || textNombre1.getText().isEmpty() || textMail.getText().isEmpty() || 
+						 passwordFieldRepetirClave.getText().isEmpty() || passwordFieldRepetirClave.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+				}else {
+					String repClave ="";
+					PersonaBO persona = new PersonaBO();
+					PersonaVO peraux = new PersonaVO();
+					peraux.setApellido1(textApellido1.getText());
+					peraux.setApellido2(textApellido2.getText());
+					peraux.setNombre1(textApellido1.getText());
+					peraux.setNombre2(textNombre2.getText());
+					peraux.setMail(textMail.getText());
+					peraux.setClave(passwordFieldpaswordClave.getText());
+					repClave = passwordFieldRepetirClave.getText();
+					if(repClave.equals(passwordFieldpaswordClave.getText())) {
+						persona.agregarPersona(peraux);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
+					}
+				}	
 				
 			}
 		});
