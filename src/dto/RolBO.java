@@ -64,8 +64,14 @@ private RolVO nRol;
 	 * @return
 	 */
 	public RolVO getRol() {
-		return nRol;
-		
+		return nRol;	
+	}
+	/**
+	 *Busco un rol segun nombre
+	 * @param nombre
+	 */
+	public void buscarRol(String nombre) {
+		nRol = DAORol.buscarRol(nombre);
 	}
 
 }
