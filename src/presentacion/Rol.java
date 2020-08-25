@@ -135,6 +135,11 @@ public class Rol extends JFrame {
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String nombre = textNombre.getText();
+				// primero la busco por el nombre
+				nRol.buscarRol(nombre);
+				// luego la elimino
 				nRol.eliminarRol(nRol.getRol().getId());
 			}
 		});
