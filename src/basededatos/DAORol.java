@@ -51,7 +51,7 @@ public class DAORol {
 				
 				while(resultado.next()) {
 					RolVO rol = new RolVO();
-					rol.setId(resultado.getInt("id_funcionalidad"));
+					rol.setId(resultado.getInt("id_rol"));
 					rol.setNombre(resultado.getString("nombre"));
 					rol.setDescripcion(resultado.getString("descripcion"));
 					roles.add(rol);
@@ -116,7 +116,7 @@ public class DAORol {
 				
 				
 				if(resultado.next()) {
-					rol.setId(resultado.getInt("id_funcionalidad"));
+					rol.setId(resultado.getInt("id_rol"));
 					rol.setNombre(resultado.getString("nombre"));
 					rol.setDescripcion(resultado.getString("descripcion"));
 				}
