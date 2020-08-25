@@ -95,5 +95,9 @@ public class Funcionalidad extends JFrame {
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(241, 192, 117, 29);
 		contentPane.add(btnListar);
+		
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.setBounds(28, 150, 117, 29);
+		contentPane.add(btnBuscar);
 	}
 }
