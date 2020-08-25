@@ -5,10 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.FuncionalidadBO;
+import dto.FuncionalidadVO;
+import dto.RolBO;
+import dto.RolVO;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Rol extends JFrame {
 
@@ -74,6 +82,17 @@ public class Rol extends JFrame {
 		contentPane.add(btnListar);
 		
 		JButton btnAlta = new JButton("Alta");
+		btnAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				RolBO rol = new RolBO();
+				RolVO rol2 = new RolVO();
+				rol2.setNombre(textNombre.getText());
+				rol2.setDescripcion(textDescripcion.getText());
+				rol.agregarRol(rol2);
+				
+			}
+		});
 		btnAlta.setBounds(6, 152, 117, 29);
 		contentPane.add(btnAlta);
 		
