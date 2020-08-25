@@ -54,71 +54,71 @@ public class Persona extends JFrame {
 	 */
 	public Persona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 443, 349);
+		setBounds(100, 100, 523, 362);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		textNombre1 = new JTextField();
-		textNombre1.setBounds(6, 38, 107, 26);
+		textNombre1.setBounds(6, 103, 107, 26);
 		contentPane.add(textNombre1);
 		textNombre1.setColumns(10);
 		
 		textNombre2 = new JTextField();
 		textNombre2.setColumns(10);
-		textNombre2.setBounds(6, 76, 107, 26);
+		textNombre2.setBounds(125, 103, 107, 26);
 		contentPane.add(textNombre2);
 		
 		textApellido1 = new JTextField();
 		textApellido1.setColumns(10);
-		textApellido1.setBounds(6, 140, 107, 26);
+		textApellido1.setBounds(6, 173, 107, 26);
 		contentPane.add(textApellido1);
 		
 		textApellido2 = new JTextField();
 		textApellido2.setColumns(10);
-		textApellido2.setBounds(6, 178, 107, 26);
+		textApellido2.setBounds(125, 173, 107, 26);
 		contentPane.add(textApellido2);
 		
 		JLabel lblNewLabel = new JLabel("Nombres");
-		lblNewLabel.setBounds(16, 16, 61, 16);
+		lblNewLabel.setBounds(6, 81, 107, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setBounds(16, 113, 61, 16);
+		lblApellidos.setBounds(6, 146, 107, 16);
 		contentPane.add(lblApellidos);
 		
 		passwordFieldpaswordClave = new JPasswordField();
-		passwordFieldpaswordClave.setBounds(125, 109, 107, 26);
+		passwordFieldpaswordClave.setBounds(242, 103, 107, 26);
 		contentPane.add(passwordFieldpaswordClave);
 		
 		JLabel lblContrasea = new JLabel("Clave");
-		lblContrasea.setBounds(135, 81, 75, 16);
+		lblContrasea.setBounds(242, 81, 75, 16);
 		contentPane.add(lblContrasea);
 		
 		passwordFieldRepetirClave = new JPasswordField();
-		passwordFieldRepetirClave.setBounds(125, 178, 107, 26);
+		passwordFieldRepetirClave.setBounds(242, 173, 107, 26);
 		contentPane.add(passwordFieldRepetirClave);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(125, 244, 107, 26);
+		comboBox.setBounds(6, 233, 107, 26);
 		contentPane.add(comboBox);
 		
 		JLabel lblNewLabel_1 = new JLabel("Documento");
-		lblNewLabel_1.setBounds(17, 217, 96, 16);
+		lblNewLabel_1.setBounds(6, 28, 96, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Mail");
-		lblNewLabel_1_1.setBounds(135, 16, 61, 16);
+		lblNewLabel_1_1.setBounds(242, 28, 107, 16);
 		contentPane.add(lblNewLabel_1_1);
 		
 		textMail = new JTextField();
 		textMail.setColumns(10);
-		textMail.setBounds(125, 38, 107, 26);
+		textMail.setBounds(242, 55, 242, 26);
 		contentPane.add(textMail);
 		
 		JLabel lblRepetirContrasea = new JLabel("Repetir Clave");
-		lblRepetirContrasea.setBounds(135, 145, 119, 16);
+		lblRepetirContrasea.setBounds(242, 146, 119, 16);
 		contentPane.add(lblRepetirContrasea);
 		
 		JButton btnAlta = new JButton("Alta");
@@ -152,7 +152,7 @@ public class Persona extends JFrame {
 				
 			}
 		});
-		btnAlta.setBounds(271, 38, 117, 29);
+		btnAlta.setBounds(6, 283, 107, 29);
 		contentPane.add(btnAlta);
 		
 		JButton btnBuscar = new JButton("Buscar");
@@ -169,7 +169,7 @@ public class Persona extends JFrame {
 	
 			}
 		});
-		btnBuscar.setBounds(271, 71, 117, 29);
+		btnBuscar.setBounds(125, 55, 107, 26);
 		contentPane.add(btnBuscar);
 		
 		JButton btnModificar = new JButton("Modificar");
@@ -179,24 +179,24 @@ public class Persona extends JFrame {
 				
 			}
 		});
-		btnModificar.setBounds(271, 178, 117, 29);
+		btnModificar.setBounds(125, 283, 107, 29);
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(271, 109, 117, 29);
+		btnEliminar.setBounds(242, 283, 107, 29);
 		contentPane.add(btnEliminar);
 		
 		JButton btnListar = new JButton("Listar");
-		btnListar.setBounds(271, 140, 117, 29);
+		btnListar.setBounds(377, 283, 107, 29);
 		contentPane.add(btnListar);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Rol");
-		lblNewLabel_1_2.setBounds(135, 217, 61, 16);
+		lblNewLabel_1_2.setBounds(6, 210, 61, 16);
 		contentPane.add(lblNewLabel_1_2);
 		
 		textDocumento = new JTextField();
 		textDocumento.setColumns(10);
-		textDocumento.setBounds(6, 244, 107, 26);
+		textDocumento.setBounds(6, 55, 107, 26);
 		contentPane.add(textDocumento);
 	}
 }
