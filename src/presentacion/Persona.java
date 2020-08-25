@@ -29,6 +29,7 @@ public class Persona extends JFrame {
 	private JPasswordField passwordFieldpaswordClave;
 	private JPasswordField passwordFieldRepetirClave;
 	private JTextField textMail;
+	private JTextField textDocumento;
 
 	/**
 	 * Launch the application.
@@ -98,11 +99,11 @@ public class Persona extends JFrame {
 		contentPane.add(passwordFieldRepetirClave);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(52, 216, 82, 27);
+		comboBox.setBounds(125, 233, 82, 27);
 		contentPane.add(comboBox);
 		
-		JLabel lblNewLabel_1 = new JLabel("Rol");
-		lblNewLabel_1.setBounds(6, 216, 61, 16);
+		JLabel lblNewLabel_1 = new JLabel("Documento");
+		lblNewLabel_1.setBounds(6, 216, 96, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Mail");
@@ -122,7 +123,7 @@ public class Persona extends JFrame {
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textApellido1.getText().isEmpty() || textApellido2.getText().isEmpty() || textNombre1.getText().isEmpty() || textMail.getText().isEmpty() || 
-						 passwordFieldRepetirClave.getText().isEmpty() || passwordFieldRepetirClave.getText().isEmpty()) {
+						 passwordFieldRepetirClave.getText().isEmpty() || passwordFieldRepetirClave.getText().isEmpty() || textDocumento.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
 				}else {
 					String repClave ="";
@@ -134,6 +135,7 @@ public class Persona extends JFrame {
 					peraux.setApellido2(textApellido2.getText());
 					peraux.setNombre1(textApellido1.getText());
 					peraux.setNombre2(textNombre2.getText());
+					peraux.setDocumento(textDocumento.getText());
 					peraux.setMail(textMail.getText());
 					peraux.setClave(passwordFieldpaswordClave.getText());
 					peraux.setRol(rol);
@@ -166,5 +168,14 @@ public class Persona extends JFrame {
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(271, 178, 117, 29);
 		contentPane.add(btnListar);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Rol");
+		lblNewLabel_1_2.setBounds(125, 216, 61, 16);
+		contentPane.add(lblNewLabel_1_2);
+		
+		textDocumento = new JTextField();
+		textDocumento.setColumns(10);
+		textDocumento.setBounds(6, 244, 107, 26);
+		contentPane.add(textDocumento);
 	}
 }
