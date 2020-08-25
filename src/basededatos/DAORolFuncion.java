@@ -26,9 +26,9 @@ private static Connection conexion = DatabaseManager.getConexion();
 				
 				PreparedStatement sentencia = conexion.prepareStatement(INSERT);
 				
-				sentencia.setInt(1, rolFuncion.getIdRolFuncion());
-				sentencia.setInt(2, rolFuncion.getIdRol());
-				sentencia.setInt(3, rolFuncion.getIdFuncion());
+				
+				sentencia.setInt(1, rolFuncion.getIdRol());
+				sentencia.setInt(2, rolFuncion.getIdFuncion());
 				
 				filasInsert = sentencia.executeUpdate();
 			//System.out.println("Se agregaron: " + filasInsert + "registros nuevos");
