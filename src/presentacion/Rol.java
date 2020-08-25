@@ -71,23 +71,19 @@ public class Rol extends JFrame {
 		contentPane.add(btnModificar);
 		
 		JButton btnListar = new JButton("Listar");
-		btnListar.setBounds(18, 228, 110, 29);
+		btnListar.setBounds(18, 228, 172, 29);
 		contentPane.add(btnListar);
 		
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.setBounds(6, 152, 117, 29);
 		contentPane.add(btnAlta);
 		
-		JButton btnBaja = new JButton("Baja");
-		btnBaja.setBounds(117, 152, 117, 29);
-		contentPane.add(btnBaja);
-		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(117, 193, 117, 29);
+		btnEliminar.setBounds(117, 152, 117, 29);
 		contentPane.add(btnEliminar);
 		
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(124, 228, 110, 29);
+		btnBuscar.setBounds(112, 193, 110, 29);
 		contentPane.add(btnBuscar);
 	}
 }
