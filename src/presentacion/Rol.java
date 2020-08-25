@@ -80,7 +80,7 @@ public class Rol extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 				else {
@@ -112,7 +112,7 @@ public class Rol extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 				else {
@@ -151,7 +151,7 @@ public class Rol extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 				else {
