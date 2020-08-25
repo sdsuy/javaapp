@@ -80,7 +80,7 @@ public class Funcionalidad extends JFrame {
 		btnAlta.setBounds(241, 24, 117, 29);
 		contentPane.add(btnAlta);
 		
-		JButton btnBaja = new JButton("Baja");
+		JButton btnBaja = new JButton("Buscar");
 		btnBaja.setBounds(241, 65, 117, 29);
 		contentPane.add(btnBaja);
 		
