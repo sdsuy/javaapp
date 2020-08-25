@@ -1,6 +1,5 @@
 package presentacion;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -80,10 +79,6 @@ public class Funcionalidad extends JFrame {
 		btnAlta.setBounds(241, 24, 117, 29);
 		contentPane.add(btnAlta);
 		
-		JButton btnBaja = new JButton("Buscar");
-		btnBaja.setBounds(241, 65, 117, 29);
-		contentPane.add(btnBaja);
-		
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(241, 108, 117, 29);
 		contentPane.add(btnModificar);
@@ -97,7 +92,7 @@ public class Funcionalidad extends JFrame {
 		contentPane.add(btnListar);
 		
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(28, 150, 117, 29);
+		btnBuscar.setBounds(241, 64, 117, 29);
 		contentPane.add(btnBuscar);
 	}
 }
