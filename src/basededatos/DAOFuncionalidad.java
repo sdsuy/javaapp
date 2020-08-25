@@ -95,8 +95,12 @@ public class DAOFuncionalidad {
 	public static FuncionalidadVO buscarFuncionalidad(String nombre) {
 		FuncionalidadVO funcionalidad = new FuncionalidadVO();
 		try {
-			Statement stmt = conexion.createStatement();
-			ResultSet rset = stmt.executeQuery(SELECT);
+			PreparedStatement prprdstmt = conexion.prepareStatement(FIND);
+			
+			prprdstmt.setString(1, nombre);
+			
+			ResultSet rset = prprdstmt.executeQuery();
+			
 			
 			if(rset.next()) {
 				funcionalidad.setId(rset.getInt("id_funcionalidad"));

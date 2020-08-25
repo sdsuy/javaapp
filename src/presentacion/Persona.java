@@ -5,11 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.PersonaBO;
+import dto.PersonaVO;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Persona extends JFrame {
 
@@ -111,6 +118,28 @@ public class Persona extends JFrame {
 		contentPane.add(lblRepetirContrasea);
 		
 		JButton btnAlta = new JButton("Alta");
+		btnAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String repClave ="";
+				PersonaBO persona = new PersonaBO();
+				PersonaVO peraux = new PersonaVO();
+				peraux.setApellido1(textApellido1.getText());
+				peraux.setApellido2(textApellido2.getText());
+				peraux.setNombre1(textApellido1.getText());
+				peraux.setNombre2(textNombre2.getText());
+				peraux.setMail(textMail.getText());
+				peraux.setClave(passwordFieldpaswordClave.getText());
+				repClave = passwordFieldRepetirClave.getText();
+				if(repClave.equals(passwordFieldpaswordClave)) {
+					persona.agregarPersona(peraux);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				
+			}
+		});
 		btnAlta.setBounds(271, 38, 117, 29);
 		contentPane.add(btnAlta);
 		
