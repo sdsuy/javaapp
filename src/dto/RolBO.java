@@ -7,7 +7,7 @@ import basededatos.DAORol;
 public class RolBO {
 	
 private LinkedList<RolVO> roles;
-private RolVO nRol;
+private RolVO rol;
 	
 	//Constructor que crea un linkedlist de roles vacio
 	
@@ -64,14 +64,14 @@ private RolVO nRol;
 	 * @return
 	 */
 	public RolVO getRol() {
-		return nRol;	
+		return rol;	
 	}
 	/**
 	 *Busco un rol segun nombre
 	 * @param nombre
 	 */
 	public void buscarRol(String nombre) {
-		nRol = DAORol.buscarRol(nombre);
+		rol = DAORol.buscarRol(nombre);
 	}
 
 }
