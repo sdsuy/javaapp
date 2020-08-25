@@ -3,7 +3,6 @@ package dto;
 import java.util.LinkedList;
 
 import basededatos.DAOPersona;
-import basededatos.DAORol;
 
 public class PersonaBO {
 	

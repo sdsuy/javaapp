@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import dto.RolFuncionVO;
-import dto.RolVO;
 
 public class DAORolFuncion {
 	
