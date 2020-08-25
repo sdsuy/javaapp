@@ -14,7 +14,7 @@ public class DAORol {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT = "INSERT INTO ROL (ID_ROL, nombre, descripcion) VALUES (seq_id_rol.nextval,?,?)";
+	private static final String INSERT = "INSERT INTO ROL (id_rol, nombre, descripcion) VALUES (seq_id_rol.nextval,?,?)";
 	private static final String SELECT = "SELECT * FROM ROL";
 	private static final String UPDATE = "UPDATE ROL SET nombre=?, descripcion=? WHERE ID_ROL=?";
 	private static final String DELETE = "DELETE FROM ROL WHERE ID_ROL=?";
