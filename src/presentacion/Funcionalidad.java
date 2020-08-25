@@ -123,7 +123,7 @@ public class Funcionalidad extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (txtNombre.getText().isEmpty() || txtDescripcion.getText().isEmpty()) {
+				if (txtNombre.getText().isEmpty()) {
 			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 			    }
 				
@@ -151,7 +151,7 @@ public class Funcionalidad extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (txtNombre.getText().isEmpty() || txtDescripcion.getText().isEmpty()) {
+				if (txtNombre.getText().isEmpty()) {
 			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 			    }
 				
