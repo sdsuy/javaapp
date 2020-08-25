@@ -11,6 +11,7 @@ import dto.FuncionalidadVO;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -71,10 +72,20 @@ public class Funcionalidad extends JFrame {
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FuncionalidadVO funaux = new FuncionalidadVO();
-				funaux.setNombre(txtNombre.getText());
-				funaux.setDescripcion(txtDescripcion.getText());
-				funcionalidad.agregarFuncionalidad(funaux);
+				
+			    if (txtNombre.getText().isEmpty() || txtDescripcion.getText().isEmpty()) {
+			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+			    }
+				
+			    else {
+			    	FuncionalidadVO funaux = new FuncionalidadVO();
+					funaux.setNombre(txtNombre.getText());
+					funaux.setDescripcion(txtDescripcion.getText());
+					funcionalidad.agregarFuncionalidad(funaux);
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+			    }
+				
 			}
 		});
 		btnAlta.setBounds(241, 24, 117, 29);
@@ -83,15 +94,26 @@ public class Funcionalidad extends JFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FuncionalidadVO funaux = new FuncionalidadVO();
-				funaux.setNombre(txtNombre.getText());
-				// primero la busco por el nombre
-				funcionalidad.buscarFuncionalidad(funaux.getNombre());
-				// segundo recupero la funcionalidad encontrada
-				funaux = funcionalidad.getFuncionalidad();
-				// tercero cambio y actualizo el valor de descripción por el nuevo
-				funaux.setDescripcion(txtDescripcion.getText());
-				funcionalidad.actualizarFuncionalidad(funaux);
+				
+				if (txtNombre.getText().isEmpty() || txtDescripcion.getText().isEmpty()) {
+			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+			    }
+				
+				else {
+					FuncionalidadVO funaux = new FuncionalidadVO();
+					funaux.setNombre(txtNombre.getText());
+					// primero la busco por el nombre
+					funcionalidad.buscarFuncionalidad(funaux.getNombre());
+					// segundo recupero la funcionalidad encontrada
+					funaux = funcionalidad.getFuncionalidad();
+					// tercero cambio y actualizo el valor de descripción por el nuevo
+					funaux.setDescripcion(txtDescripcion.getText());
+					funcionalidad.actualizarFuncionalidad(funaux);
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 			}
 		});
 		btnModificar.setBounds(241, 108, 117, 29);
@@ -100,11 +122,22 @@ public class Funcionalidad extends JFrame {
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre = txtNombre.getText();
-				// primero la busco por el nombre
-				funcionalidad.buscarFuncionalidad(nombre);
-				// luego la elimino
-				funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
+				
+				if (txtNombre.getText().isEmpty() || txtDescripcion.getText().isEmpty()) {
+			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+			    }
+				
+				else {
+					String nombre = txtNombre.getText();
+					// primero la busco por el nombre
+					funcionalidad.buscarFuncionalidad(nombre);
+					// luego la elimino
+					funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 			}
 		});
 		btnEliminar.setBounds(241, 150, 117, 29);
@@ -117,11 +150,22 @@ public class Funcionalidad extends JFrame {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre = txtNombre.getText();
-				// primero la busco por el nombre
-				funcionalidad.buscarFuncionalidad(nombre);
-				// luego seteo la descripción
-				txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
+				
+				if (txtNombre.getText().isEmpty() || txtDescripcion.getText().isEmpty()) {
+			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+			    }
+				
+				else {
+					String nombre = txtNombre.getText();
+					// primero la busco por el nombre
+					funcionalidad.buscarFuncionalidad(nombre);
+					// luego seteo la descripción
+					txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 			}
 		});
 		btnBuscar.setBounds(241, 64, 117, 29);
