@@ -35,7 +35,7 @@ public class DAOPersona {
 			prepStatment.setInt(10, persona.getRol().getId());
 			
 			int filasAgregadas = prepStatment.executeUpdate();
-			System.out.println("Se agrego filas "+ filasAgregadas + "registros nuevos");
+//			System.out.println("Se agrego filas "+ filasAgregadas + "registros nuevos");
 			return filasAgregadas>0;
 		}
 		catch(SQLException e){

@@ -93,7 +93,7 @@ public class DAORol {
 				
 				filasEliminadas = sentencia.executeUpdate();
 				
-				System.out.println("Se eliminaron: " + filasEliminadas + " registros");
+				//System.out.println("Se eliminaron: " + filasEliminadas + " registros");
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
