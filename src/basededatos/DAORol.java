@@ -116,7 +116,7 @@ public class DAORol {
 				
 				
 				if(resultado.next()) {
-					rol.setId(resultado.getInt("id_funcionalidad"));
+					rol.setId(resultado.getInt("id_rol"));
 					rol.setNombre(resultado.getString("nombre"));
 					rol.setDescripcion(resultado.getString("descripcion"));
 				}
