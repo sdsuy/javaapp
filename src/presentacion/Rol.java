@@ -14,6 +14,7 @@ import dto.RolVO;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -77,11 +78,21 @@ public class Rol extends JFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RolVO rol = new RolVO();
-				rol.setNombre(textNombre.getText());//Busco por nombre
-				rol = nRol.getRol();//Recupero el rol encontrado 
-				rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
-				nRol.actualizarRol(rol);
+				
+				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					RolVO rol = new RolVO();
+					rol.setNombre(textNombre.getText());//Busco por nombre
+					rol = nRol.getRol();//Recupero el rol encontrado 
+					rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
+					nRol.actualizarRol(rol);
+					
+					
+				}
+				
 			}
 		});
 		btnModificar.setBounds(6, 193, 117, 29);
