@@ -14,7 +14,7 @@ import java.sql.Connection;
 public class DAOPersona {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
-	private static final String INSERT_PERSONA = "INSERT INTO PERSONA (ID_PERSONA,DOCUMENTO,APELLIDO1,APELLIDO2,NOMBRE1,NOMBRE2,FECHA_NAC,CLAVE,MAIL,ID_ROL VALUES (seq_id_persona.nextval,?,?,?,?,?,?,?,?,?) ";
+	private static final String INSERT_PERSONA = "INSERT INTO PERSONA (ID_PERSONA,DOCUMENTO,APELLIDO1,APELLIDO2,NOMBRE1,NOMBRE2,FECHA_NAC,CLAVE,MAIL,ID_ROL) VALUES (seq_id_persona.nextval,?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=?,ID_ROL=? WHERE ID_PERSONA=?";
 	private static final String ALL_PERSONA = "SELECT * FROM PERSONA WHERE ID_PERSONA";
