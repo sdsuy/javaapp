@@ -18,7 +18,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 public class Persona extends JFrame {
 
@@ -54,7 +57,7 @@ public class Persona extends JFrame {
 	 */
 	public Persona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 523, 362);
+		setBounds(100, 100, 491, 363);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -114,12 +117,17 @@ public class Persona extends JFrame {
 		
 		textMail = new JTextField();
 		textMail.setColumns(10);
-		textMail.setBounds(242, 55, 242, 26);
+		textMail.setBounds(242, 55, 224, 26);
 		contentPane.add(textMail);
 		
 		JLabel lblRepetirContrasea = new JLabel("Repetir Clave");
 		lblRepetirContrasea.setBounds(242, 146, 119, 16);
 		contentPane.add(lblRepetirContrasea);
+		
+		JDateChooser dateFechaNac = new JDateChooser();
+		dateFechaNac.setDateFormatString("dd/MM/yyyy");
+		dateFechaNac.setBounds(359, 103, 107, 26);
+		contentPane.add(dateFechaNac);
 		
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
@@ -133,11 +141,12 @@ public class Persona extends JFrame {
 					rol.setId(1);
 					PersonaBO persona = new PersonaBO();
 					PersonaVO peraux = new PersonaVO();
+					peraux.setDocumento(textDocumento.getText());
 					peraux.setApellido1(textApellido1.getText());
 					peraux.setApellido2(textApellido2.getText());
-					peraux.setNombre1(textApellido1.getText());
+					peraux.setNombre1(textNombre1.getText());
 					peraux.setNombre2(textNombre2.getText());
-					peraux.setDocumento(textDocumento.getText());
+					peraux.setFecha_nac((Date) dateFechaNac.getDate());
 					peraux.setMail(textMail.getText());
 					peraux.setClave(passwordFieldpaswordClave.getText());
 					peraux.setRol(rol);
@@ -187,7 +196,7 @@ public class Persona extends JFrame {
 		contentPane.add(btnEliminar);
 		
 		JButton btnListar = new JButton("Listar");
-		btnListar.setBounds(377, 283, 107, 29);
+		btnListar.setBounds(359, 283, 107, 29);
 		contentPane.add(btnListar);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Rol");
@@ -198,5 +207,9 @@ public class Persona extends JFrame {
 		textDocumento.setColumns(10);
 		textDocumento.setBounds(6, 55, 107, 26);
 		contentPane.add(textDocumento);
+		
+		JLabel lblFechaDeNac = new JLabel("Fecha de Nacimiento");
+		lblFechaDeNac.setBounds(359, 82, 107, 15);
+		contentPane.add(lblFechaDeNac);
 	}
 }
