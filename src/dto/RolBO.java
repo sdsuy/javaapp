@@ -8,10 +8,8 @@ public class RolBO {
 	
 private LinkedList<RolVO> roles;
 	
-	/**
-	 * 
-	 * Constructor que crea un linkedlist de roles vacio
-	 */
+	//Constructor que crea un linkedlist de roles vacio
+	
 	public RolBO() {
 		this.roles = new LinkedList<>();
 	}
@@ -26,10 +24,8 @@ private LinkedList<RolVO> roles;
 		return DAORol.insertarRol(rol);
 	}
 	
-	/**
-	 * 
-	 * Cargo los roles
-	 */
+	 //Cargo los roles
+	 
 	public void obtenerRoles() {
 		roles = DAORol.seleccionarRoles();
 	}
