@@ -72,6 +72,20 @@ public class Principal {
 		mnAdministrar.add(mntmPersona);
 		
 		JMenuItem mntmRol = new JMenuItem("Rol");
+		mntmRol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							Rol frame = new Rol();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		mnAdministrar.add(mntmRol);
 		
 		JMenuItem mntmFuncionalidad = new JMenuItem("Funcionalidad");
