@@ -18,6 +18,7 @@ public class DAOPersona {
 	private static final String DELETE_PERSONA = "DELETE FROM PERSONA WHERE ID_PERSONA = ?";
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=?,ID_ROL=? WHERE ID_PERSONA=?";
 	private static final String ALL_PERSONA = "SELECT * FROM PERSONA WHERE ID_PERSONA";
+	private static final String FIND_PERSONA = "SELECT * FROM PERSONA WHERE DOCUMENTO=?";
 	
 	//insertar persona
 	public static boolean nuevaPersona(PersonaVO persona) {
@@ -104,6 +105,33 @@ public class DAOPersona {
 			}
 			
 			return false;
+			
+		}
+		public static PersonaVO buscarPersona(String doc) {
+			PersonaVO per = new PersonaVO();
+			try {
+				PreparedStatement pst = DatabaseManager.getConexion().prepareStatement(FIND_PERSONA);
+				pst.setString(1, doc);
+				
+				ResultSet rs = pst.executeQuery();
+				while(rs.next()) {
+					rs.getInt("ID_PERSONA");
+					rs.getString("DOCUMENTO");
+					rs.getString("APELLIDO1");
+					rs.getString("APELLIDO2");
+					rs.getString("NOMBRE1");
+					rs.getString("NOMBRE2");
+					rs.getDate("FECHA_NAC");
+					rs.getString("CLAVE");
+					rs.getString("MAIL");
+					
+				}
+				return per;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+			
 			
 		}
 		
