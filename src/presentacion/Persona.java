@@ -209,7 +209,8 @@ public class Persona extends JFrame {
 				peraux.setApellido2(textApellido2.getText());
 				peraux.setNombre1(textNombre1.getText());
 				peraux.setNombre2(textNombre2.getText());
-				peraux.setFecha_nac(dateFechaNac.getDate());
+				java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
+				peraux.setFecha_nac(sqldate);
 				peraux.setClave(passwordFieldpaswordClave.getText());
 				peraux.setMail(textMail.getText());
 				persona.actualizarPersona(peraux);
