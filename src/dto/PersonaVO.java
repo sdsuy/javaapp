@@ -1,6 +1,7 @@
 package dto;
 
 import java.sql.Date;
+import java.util.LinkedList;
 
 import presentacion.Rol;
 
@@ -15,7 +16,6 @@ public class PersonaVO {
 	private String clave;
 	private String mail; 
 	private RolVO rol;
-	
 	public PersonaVO() {
 		
 	}
