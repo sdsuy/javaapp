@@ -66,5 +66,9 @@ private PersonaVO persona;
 	public void buscarPersona(String documento) {
 		persona = DAOPersona.buscarPersona(documento);
 	}
+	public PersonaVO getPersona() {
+		return persona;
+		
+	}
 
 }
