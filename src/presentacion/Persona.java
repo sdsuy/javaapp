@@ -202,7 +202,17 @@ public class Persona extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PersonaVO peraux = new PersonaVO();
-				
+				persona.buscarPersona(textDocumento.getText());
+				peraux = persona.getPersona();
+				peraux.setDocumento(textDocumento.getText());
+				peraux.setApellido1(textApellido1.getText());
+				peraux.setApellido2(textApellido2.getText());
+				peraux.setNombre1(textNombre1.getText());
+				peraux.setNombre2(textNombre2.getText());
+				peraux.setFecha_nac(dateFechaNac.getDate());
+				peraux.setClave(passwordFieldpaswordClave.getText());
+				peraux.setMail(textMail.getText());
+				persona.actualizarPersona(peraux);
 			}
 		});
 		btnModificar.setBounds(125, 283, 107, 29);
