@@ -90,7 +90,7 @@ public class Rol extends JFrame {
 					rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
 					nRol.actualizarRol(rol);
 					
-					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 			}
@@ -111,11 +111,21 @@ public class Rol extends JFrame {
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				RolBO rol = new RolBO();
-				RolVO rol2 = new RolVO();
-				rol2.setNombre(textNombre.getText());
-				rol2.setDescripcion(textDescripcion.getText());
-				rol.agregarRol(rol2);
+				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					RolBO rol = new RolBO();
+					RolVO rol2 = new RolVO();
+					rol2.setNombre(textNombre.getText());
+					rol2.setDescripcion(textDescripcion.getText());
+					rol.agregarRol(rol2);
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 				
 			}
 		});
@@ -134,9 +144,20 @@ public class Rol extends JFrame {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre =textNombre.getText();
-				nRol.buscarRol(nombre);
-				textDescripcion.setText(nRol.getRol().getDescripcion());
+				
+				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					String nombre =textNombre.getText();
+					nRol.buscarRol(nombre);
+					textDescripcion.setText(nRol.getRol().getDescripcion());
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 			}
 		});
 		btnBuscar.setBounds(112, 193, 110, 29);
