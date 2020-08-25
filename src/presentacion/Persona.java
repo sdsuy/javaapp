@@ -115,7 +115,7 @@ public class Persona extends JFrame {
 		btnAlta.setBounds(271, 38, 117, 29);
 		contentPane.add(btnAlta);
 		
-		JButton btnBaja = new JButton("Baja");
+		JButton btnBaja = new JButton("Buscar");
 		btnBaja.setBounds(271, 76, 117, 29);
 		contentPane.add(btnBaja);
 		
@@ -130,9 +130,5 @@ public class Persona extends JFrame {
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(271, 178, 117, 29);
 		contentPane.add(btnListar);
-		
-		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(170, 216, 117, 29);
-		contentPane.add(btnBuscar);
 	}
 }
