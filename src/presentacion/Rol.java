@@ -116,6 +116,13 @@ public class Rol extends JFrame {
 		contentPane.add(btnEliminar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre =textNombre.getText();
+				nRol.buscarRol(nombre);
+				textDescripcion.setText(nRol.getRol().getDescripcion());
+			}
+		});
 		btnBuscar.setBounds(112, 193, 110, 29);
 		contentPane.add(btnBuscar);
 	}
