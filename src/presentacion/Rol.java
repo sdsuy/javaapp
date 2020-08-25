@@ -136,11 +136,20 @@ public class Rol extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nombre = textNombre.getText();
-				// primero la busco por el nombre
-				nRol.buscarRol(nombre);
-				// luego la elimino
-				nRol.eliminarRol(nRol.getRol().getId());
+				if (textNombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					String nombre = textNombre.getText();
+					// primero la busco por el nombre
+					nRol.buscarRol(nombre);
+					// luego la elimino
+					nRol.eliminarRol(nRol.getRol().getId());
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
 			}
 		});
 		btnEliminar.setBounds(117, 152, 117, 29);
@@ -150,7 +159,7 @@ public class Rol extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (textNombre.getText().isEmpty() || textDescripcion.getText().isEmpty()) {
+				if (textNombre.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
