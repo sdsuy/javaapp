@@ -209,6 +209,11 @@ public class Persona extends JFrame {
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				persona.eliminarPersona(persona.getPersona().getId());
+			}
+		});
 		btnEliminar.setBounds(242, 283, 107, 29);
 		contentPane.add(btnEliminar);
 		
