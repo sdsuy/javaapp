@@ -23,16 +23,16 @@ public class DAOPersona {
 	public static boolean nuevaPersona(PersonaVO persona) {
 		try {
 			PreparedStatement prepStatment = conexion.prepareStatement(INSERT_PERSONA);
-			prepStatment.setInt(1, persona.getId());
-			prepStatment.setString(2, persona.getDocumento());
+			
+			prepStatment.setString(1, persona.getDocumento());
+			prepStatment.setString(2, persona.getApellido1());
 			prepStatment.setString(3, persona.getApellido1());
-			prepStatment.setString(4, persona.getApellido1());
-			prepStatment.setString(5, persona.getNombre1());
-			prepStatment.setString(6, persona.getNombre2());
-			prepStatment.setDate(7, persona.getFecha_nac());
-			prepStatment.setString(8, persona.getClave());
-			prepStatment.setString(9, persona.getMail());
-			prepStatment.setInt(10, persona.getRol().getId());
+			prepStatment.setString(4, persona.getNombre1());
+			prepStatment.setString(5, persona.getNombre2());
+			prepStatment.setDate(6, persona.getFecha_nac());
+			prepStatment.setString(7, persona.getClave());
+			prepStatment.setString(8, persona.getMail());
+			prepStatment.setInt(9, persona.getRol().getId());
 			
 			int filasAgregadas = prepStatment.executeUpdate();
 //			System.out.println("Se agrego filas "+ filasAgregadas + "registros nuevos");
