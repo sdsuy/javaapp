@@ -7,6 +7,7 @@ import basededatos.DAOPersona;
 public class PersonaBO {
 	
 private LinkedList<PersonaVO> personas;
+private PersonaVO persona;
 	
 	//Constructor que crea un linkedlist de personas vacio
 	
@@ -57,6 +58,13 @@ private LinkedList<PersonaVO> personas;
 	 */
 	public LinkedList<PersonaVO> getPersonas() {
 		return personas;
+	}
+	/**
+	 * Busco una persona
+	 * @param documento
+	 */
+	public void buscarPersona(String documento) {
+		persona = DAOPersona.buscarPersona(documento);
 	}
 
 }

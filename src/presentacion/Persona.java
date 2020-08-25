@@ -31,6 +31,7 @@ public class Persona extends JFrame {
 	private JPasswordField passwordFieldRepetirClave;
 	private JTextField textMail;
 	private JTextField textDocumento;
+	PersonaBO persona = new PersonaBO();
 
 	/**
 	 * Launch the application.
@@ -158,8 +159,7 @@ public class Persona extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PersonaVO per = new PersonaVO();
-				String doc = textDocumento.getText();
-				per = DAOPersona.buscarPersona(doc);
+				persona.buscarPersona(textDocumento.getText());
 				textDocumento.setText(per.getDocumento());
 				textApellido1.setText(per.getApellido1());
 				textApellido2.setText(per.getApellido2());
