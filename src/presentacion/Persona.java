@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import dto.PersonaBO;
 import dto.PersonaVO;
+import dto.RolVO;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -125,6 +126,8 @@ public class Persona extends JFrame {
 					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
 				}else {
 					String repClave ="";
+					RolVO rol = new RolVO();
+					rol.setId(1);
 					PersonaBO persona = new PersonaBO();
 					PersonaVO peraux = new PersonaVO();
 					peraux.setApellido1(textApellido1.getText());
@@ -133,6 +136,7 @@ public class Persona extends JFrame {
 					peraux.setNombre2(textNombre2.getText());
 					peraux.setMail(textMail.getText());
 					peraux.setClave(passwordFieldpaswordClave.getText());
+					peraux.setRol(rol);
 					repClave = passwordFieldRepetirClave.getText();
 					if(repClave.equals(passwordFieldpaswordClave.getText())) {
 						persona.agregarPersona(peraux);
