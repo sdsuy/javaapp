@@ -202,13 +202,29 @@ public class Persona extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PersonaVO peraux = new PersonaVO();
-				
+				persona.buscarPersona(textDocumento.getText());
+				peraux = persona.getPersona();
+				peraux.setDocumento(textDocumento.getText());
+				peraux.setApellido1(textApellido1.getText());
+				peraux.setApellido2(textApellido2.getText());
+				peraux.setNombre1(textNombre1.getText());
+				peraux.setNombre2(textNombre2.getText());
+				java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
+				peraux.setFecha_nac(sqldate);
+				peraux.setClave(passwordFieldpaswordClave.getText());
+				peraux.setMail(textMail.getText());
+				persona.actualizarPersona(peraux);
 			}
 		});
 		btnModificar.setBounds(125, 283, 107, 29);
 		contentPane.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				persona.eliminarPersona(persona.getPersona().getId());
+			}
+		});
 		btnEliminar.setBounds(242, 283, 107, 29);
 		contentPane.add(btnEliminar);
 		
