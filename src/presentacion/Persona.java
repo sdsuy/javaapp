@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import basededatos.DAOPersona;
 import dto.PersonaBO;
 import dto.PersonaVO;
+import dto.RolBO;
 import dto.RolVO;
 
 import javax.swing.JTextField;
@@ -19,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.util.LinkedList;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -34,7 +36,9 @@ public class Persona extends JFrame {
 	private JPasswordField passwordFieldRepetirClave;
 	private JTextField textMail;
 	private JTextField textDocumento;
-	PersonaBO persona = new PersonaBO();
+	
+	private PersonaBO persona = new PersonaBO();
+	private RolBO rol = new RolBO();
 
 	/**
 	 * Launch the application.
@@ -103,9 +107,17 @@ public class Persona extends JFrame {
 		passwordFieldRepetirClave.setBounds(242, 173, 107, 26);
 		contentPane.add(passwordFieldRepetirClave);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(6, 233, 107, 26);
-		contentPane.add(comboBox);
+		JComboBox cmbBoxRol = new JComboBox();
+		cmbBoxRol.setBounds(6, 233, 226, 26);
+		contentPane.add(cmbBoxRol);
+		
+		
+		// Lleno el cmbBoxRol con los nombres de los roles
+		rol.obtenerRoles();
+		LinkedList<RolVO> roles = rol.getRoles();
+		for(RolVO rol: roles) {
+			cmbBoxRol.addItem(rol.getNombre());
+		}
 		
 		JLabel lblNewLabel_1 = new JLabel("Documento");
 		lblNewLabel_1.setBounds(6, 28, 96, 16);
@@ -137,8 +149,12 @@ public class Persona extends JFrame {
 					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
 				}else {
 					String repClave ="";
-					RolVO rol = new RolVO();
-					rol.setId(1);
+					
+					// tomo el nombre del rol del comboBox y lo paso a rolaux desde el BO luego de buscarlo
+					String nombreRol = cmbBoxRol.getSelectedItem().toString();
+					rol.buscarRol(nombreRol);
+					RolVO rolaux = rol.getRol();
+					
 					PersonaBO persona = new PersonaBO();
 					PersonaVO peraux = new PersonaVO();
 					peraux.setDocumento(textDocumento.getText());
@@ -146,10 +162,11 @@ public class Persona extends JFrame {
 					peraux.setApellido2(textApellido2.getText());
 					peraux.setNombre1(textNombre1.getText());
 					peraux.setNombre2(textNombre2.getText());
-					peraux.setFecha_nac((Date) dateFechaNac.getDate());
+					java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
+					peraux.setFecha_nac(sqldate);
 					peraux.setMail(textMail.getText());
 					peraux.setClave(passwordFieldpaswordClave.getText());
-					peraux.setRol(rol);
+					peraux.setRol(rolaux);
 					repClave = passwordFieldRepetirClave.getText();
 					if(repClave.equals(passwordFieldpaswordClave.getText())) {
 						persona.agregarPersona(peraux);
