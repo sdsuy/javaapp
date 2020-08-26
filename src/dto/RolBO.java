@@ -3,6 +3,7 @@ package dto;
 import java.util.LinkedList;
 
 import basededatos.DAORol;
+import basededatos.DAORolFuncion;
 
 public class RolBO {
 	
@@ -22,7 +23,20 @@ private RolVO rol;
 	 * @return
 	 */
 	public boolean agregarRol(RolVO rol) {
-		return DAORol.insertarRol(rol);
+		boolean agregado = DAORol.insertarRol(rol); // agrego el rol
+		if(agregado) {
+			int rolId = DAORol.buscarRol(rol.getNombre()).getId(); // obtengo el ID del rol creado
+			rol.setId(rolId);
+			for(FuncionalidadVO funaux: rol.getFuncionalidades()) {
+				RolFuncionVO rolFuncion = new RolFuncionVO();
+				rolFuncion.setIdFuncion(funaux.getId());
+				rolFuncion.setIdRol(rol.getId());
+				if(!DAORolFuncion.insertarRolFuncion(rolFuncion)) {
+					return false; // retorna false sólo si alguna RolFuncion no logra insertarse
+				}
+			}
+		}
+		return agregado;
 	}
 	
 	 //Cargo los roles
