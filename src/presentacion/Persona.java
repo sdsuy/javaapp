@@ -33,6 +33,7 @@ public class Persona extends JFrame {
 	private JPasswordField passwordFieldRepetirClave;
 	private JTextField textMail;
 	private JTextField textDocumento;
+	private JDateChooser dateFechaNac;
 	
 	private PersonaBO persona = new PersonaBO();
 	private RolBO rol = new RolBO();
@@ -133,7 +134,7 @@ public class Persona extends JFrame {
 		lblRepetirContrasea.setBounds(242, 146, 119, 16);
 		contentPane.add(lblRepetirContrasea);
 		
-		JDateChooser dateFechaNac = new JDateChooser();
+		dateFechaNac = new JDateChooser();
 		dateFechaNac.setDateFormatString("dd/MM/yyyy");
 		dateFechaNac.setBounds(359, 103, 107, 26);
 		contentPane.add(dateFechaNac);
@@ -353,7 +354,9 @@ public class Persona extends JFrame {
     	textNombre1.setText("");
     	textNombre2.setText("");
     	passwordFieldpaswordClave.setText("");
+    	passwordFieldRepetirClave.setText("");
     	textMail.setText("");
+    	dateFechaNac.setCalendar(null);
     	
 	}
 }
