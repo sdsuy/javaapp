@@ -230,7 +230,7 @@ public class Persona extends JFrame {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(textApellido1.getText().isEmpty() || textApellido2.getText().isEmpty() || textNombre1.getText().isEmpty() || textMail.getText().isEmpty() || 
+				if(textApellido1.getText().isEmpty() || textApellido2.getText().isEmpty() || textNombre1.getText().isEmpty() || textMail.getText().isEmpty() || passwordFieldpaswordClave.getText().isEmpty() || 
 						 passwordFieldRepetirClave.getText().isEmpty() || textDocumento.getText().isEmpty()) {
 					
 					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
@@ -295,6 +295,29 @@ public class Persona extends JFrame {
 		contentPane.add(btnEliminar);
 		
 		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				// -- Codigo para listar
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							// Actualizo la lista de personas
+							persona.obtenerPersonas();
+							String[] columnas = { "Documento", "Apellido1", "Apellido2", "Nombre1", "Nombre2", "Fecha_nac", "Clave", "Mail", "Rol" };
+							
+							Listado frame = new Listado(persona.getPersonas(), columnas);
+							frame.setVisible(true);
+							
+							
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnListar.setBounds(359, 283, 107, 29);
 		contentPane.add(btnListar);
 		
