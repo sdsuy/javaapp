@@ -163,7 +163,7 @@ public class Funcionalidad extends JFrame {
 							Listado frame = new Listado(funcionalidad.getFuncionalidades(), columnas);
 							frame.setVisible(true);
 							
-							limpiarCampos();
+							
 							
 						} catch (Exception e) {
 							e.printStackTrace();
