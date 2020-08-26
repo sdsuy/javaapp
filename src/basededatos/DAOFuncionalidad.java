@@ -17,7 +17,8 @@ public class DAOFuncionalidad {
 	private static final String SELECT = "SELECT * FROM funcionalidad";
 	private static final String UPDATE = "UPDATE funcionalidad SET nombre=?, descripcion=? WHERE id_funcionalidad=?";
 	private static final String DELETE = "DELETE FROM funcionalidad WHERE id_funcionalidad=?";
-	private static final String FIND = "SELECT * FROM funcionalidad WHERE nombre=?";
+	private static final String FIND_BY_NAME = "SELECT * FROM funcionalidad WHERE nombre=?";
+	private static final String FIND_BY_ID = "SELECT * FROM funcionalidad WHERE id_funcionalidad=?";
 	
 	// Insertar registro
 	public static boolean insertarFuncionalidad(FuncionalidadVO funcionalidad) {
@@ -91,11 +92,11 @@ public class DAOFuncionalidad {
 		return filasEliminadas > 0;
 	}
 	
-	// Buscar un registro
+	// Buscar un registro por nombre
 	public static FuncionalidadVO buscarFuncionalidad(String nombre) {
 		FuncionalidadVO funcionalidad = new FuncionalidadVO();
 		try {
-			PreparedStatement prprdstmt = conexion.prepareStatement(FIND);
+			PreparedStatement prprdstmt = conexion.prepareStatement(FIND_BY_NAME);
 			
 			prprdstmt.setString(1, nombre);
 			
@@ -112,5 +113,27 @@ public class DAOFuncionalidad {
 		}
 		return funcionalidad;
 	}
+	
+	// Buscar un registro por nombre
+		public static FuncionalidadVO buscarFuncionalidadById(int idFuncionalidad) {
+			FuncionalidadVO funcionalidad = new FuncionalidadVO();
+			try {
+				PreparedStatement prprdstmt = conexion.prepareStatement(FIND_BY_ID);
+				
+				prprdstmt.setInt(1, idFuncionalidad);
+				
+				ResultSet rset = prprdstmt.executeQuery();
+				
+				
+				if(rset.next()) {
+					funcionalidad.setId(rset.getInt("id_funcionalidad"));
+					funcionalidad.setNombre(rset.getString("nombre"));
+					funcionalidad.setDescripcion(rset.getString("descripcion"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return funcionalidad;
+		}
 
 }
