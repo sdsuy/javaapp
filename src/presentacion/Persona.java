@@ -304,7 +304,7 @@ public class Persona extends JFrame {
 						try {
 							// Actualizo la lista de personas
 							persona.obtenerPersonas();
-							String[] columnas = {"DOCUMENTO", "APELLIDO1", "APELLIDO2", "NOMBRE1", "NOMBRE2", "FECHA_NAC", "MAIL"};
+							String[] columnas = {"DOCUMENTO", "APELLIDO1", "APELLIDO2", "NOMBRE1", "NOMBRE2", "FECHA_NAC", "CLAVE", "MAIL"};
 							
 							Listado frame = new Listado(persona.getPersonas(), columnas);
 							frame.setVisible(true);
