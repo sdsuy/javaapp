@@ -18,8 +18,12 @@ import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class Rol extends JFrame {
 
@@ -29,6 +33,7 @@ public class Rol extends JFrame {
 	
 	private RolBO rol = new RolBO();
 	private FuncionalidadBO funcionalidad = new FuncionalidadBO();
+	private List<String> selectedNombresFuncionalidades = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -54,28 +59,28 @@ public class Rol extends JFrame {
 	 */
 	public Rol() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 483, 339);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		textNombre = new JTextField();
-		textNombre.setBounds(18, 51, 130, 26);
+		textNombre.setBounds(6, 51, 238, 26);
 		contentPane.add(textNombre);
 		textNombre.setColumns(10);
 		
 		textDescripcion = new JTextField();
 		textDescripcion.setColumns(10);
-		textDescripcion.setBounds(18, 119, 130, 26);
+		textDescripcion.setBounds(6, 119, 238, 26);
 		contentPane.add(textDescripcion);
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
-		lblNewLabel.setBounds(20, 27, 61, 16);
+		lblNewLabel.setBounds(6, 24, 61, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
-		lblDescripcion.setBounds(18, 91, 95, 16);
+		lblDescripcion.setBounds(6, 92, 95, 16);
 		contentPane.add(lblDescripcion);
 		
 		// Lleno el listFuncionalidades
@@ -87,7 +92,14 @@ public class Rol extends JFrame {
 		}
 		
 		JList listFuncionalidades = new JList(listModel);
-		listFuncionalidades.setBounds(234, 22, 197, 235);
+		listFuncionalidades.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				if(!arg0.getValueIsAdjusting()) {
+					selectedNombresFuncionalidades = listFuncionalidades.getSelectedValuesList();
+				}
+			}
+		});
+		listFuncionalidades.setBounds(254, 35, 203, 254);
 		contentPane.add(listFuncionalidades);
 		
 		JButton btnModificar = new JButton("Modificar");
@@ -103,7 +115,7 @@ public class Rol extends JFrame {
 					rolaux.setNombre(textNombre.getText());//Busco por nombre
 					rolaux = rol.getRol();//Recupero el rol encontrado 
 					rolaux.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
-					
+					rolaux.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades)); // llamo al metodo que crea el LinkedList y lo seteo
 					
 					boolean retorno =  rol.actualizarRol(rolaux);
 					
@@ -145,7 +157,7 @@ public class Rol extends JFrame {
 				// -- FIN
 			}
 		});
-		btnListar.setBounds(18, 228, 172, 29);
+		btnListar.setBounds(6, 233, 238, 29);
 		contentPane.add(btnListar);
 		
 		JButton btnAlta = new JButton("Alta");
@@ -160,7 +172,7 @@ public class Rol extends JFrame {
 					RolVO rolaux = new RolVO();
 					rolaux.setNombre(textNombre.getText());
 					rolaux.setDescripcion(textDescripcion.getText());
-					
+					rolaux.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades)); // llamo al metodo que crea elLinkedList y lo seteo
 					
 					boolean resultado = rol.agregarRol(rolaux);
 					
@@ -215,7 +227,7 @@ public class Rol extends JFrame {
 				
 			}
 		});
-		btnEliminar.setBounds(117, 152, 117, 29);
+		btnEliminar.setBounds(127, 152, 117, 29);
 		contentPane.add(btnEliminar);
 		
 		JButton btnBuscar = new JButton("Buscar");
@@ -236,18 +248,28 @@ public class Rol extends JFrame {
 				
 			}
 		});
-		btnBuscar.setBounds(112, 193, 110, 29);
+		btnBuscar.setBounds(127, 193, 117, 29);
 		contentPane.add(btnBuscar);
 		
-		
-		
+		JLabel lblFuncionalidades = new JLabel("Funcionalidades:");
+		lblFuncionalidades.setBounds(244, 10, 172, 14);
+		contentPane.add(lblFuncionalidades);	
 		
 	}
 	
-    public void limpiarCampos() {
+    private void limpiarCampos() {
 		
     	textNombre.setText("");
     	textDescripcion.setText("");
     	
 	}
+    
+    private LinkedList<FuncionalidadVO> selectedFuncionalidades(List<String> listaNombresFuncionalidades){
+    	LinkedList<FuncionalidadVO> funcionalidades = new LinkedList<>();
+    	for(String nombreFuncionalidad: listaNombresFuncionalidades) {
+    		funcionalidad.buscarFuncionalidad(nombreFuncionalidad);
+    		funcionalidades.add(funcionalidad.getFuncionalidad());
+    	}
+    	return funcionalidades;
+    }
 }
