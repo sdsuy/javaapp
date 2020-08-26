@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import basededatos.DAOPersona;
 import dto.PersonaBO;
 import dto.PersonaVO;
 import dto.RolBO;
@@ -19,10 +18,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.util.LinkedList;
 import java.awt.event.ActionEvent;
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
 public class Persona extends JFrame {
@@ -207,14 +204,16 @@ public class Persona extends JFrame {
 				else {
 					PersonaVO per = new PersonaVO();
 					persona.buscarPersona(textDocumento.getText());
+					per = persona.getPersona();
 					textDocumento.setText(per.getDocumento());
 					textApellido1.setText(per.getApellido1());
 					textApellido2.setText(per.getApellido2());
 					textNombre1.setText(per.getNombre1());
 					textNombre2.setText(per.getNombre2());
+					dateFechaNac.setDate(per.getFecha_nac());
+					passwordFieldpaswordClave.setText(per.getClave());
 					textMail.setText(per.getMail());
-					
-					limpiarCampos();
+					cmbBoxRol.setSelectedItem(per.getRol().getNombre());
 					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}

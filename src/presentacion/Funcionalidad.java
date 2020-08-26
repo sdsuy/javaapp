@@ -222,8 +222,6 @@ public class Funcionalidad extends JFrame {
 					// luego seteo la descripción
 					txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
 					
-					limpiarCampos();
-					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
