@@ -24,7 +24,7 @@ public class Rol extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNombre;
 	private JTextField textDescripcion;
-	private RolBO nRol = new RolBO();
+	private RolBO rol = new RolBO();
 
 	/**
 	 * Launch the application.
@@ -87,11 +87,11 @@ public class Rol extends JFrame {
 				}
 				
 				else {
-					RolVO rol = new RolVO();
-					rol.setNombre(textNombre.getText());//Busco por nombre
-					rol = nRol.getRol();//Recupero el rol encontrado 
-					rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
-					nRol.actualizarRol(rol);
+					RolVO rolaux = new RolVO();
+					rolaux.setNombre(textNombre.getText());//Busco por nombre
+					rolaux = rol.getRol();//Recupero el rol encontrado 
+					rolaux.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
+					rol.actualizarRol(rolaux);
 					
 					limpiarCampos();
 					
@@ -106,7 +106,22 @@ public class Rol extends JFrame {
 		JButton btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				// -- Codigo para listar
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							// Actualizo la lista de roles
+							rol.obtenerRoles();
+							String[] columnas = { "Nombre", "Descripcion" };
+							// envio el
+							Listado frame = new Listado(rol.getRoles(), columnas);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				// -- FIN
 			}
 		});
 		btnListar.setBounds(18, 228, 172, 29);
@@ -121,11 +136,10 @@ public class Rol extends JFrame {
 				}
 				
 				else {
-					RolBO rol = new RolBO();
-					RolVO rol2 = new RolVO();
-					rol2.setNombre(textNombre.getText());
-					rol2.setDescripcion(textDescripcion.getText());
-					rol.agregarRol(rol2);
+					RolVO rolaux = new RolVO();
+					rolaux.setNombre(textNombre.getText());
+					rolaux.setDescripcion(textDescripcion.getText());
+					rol.agregarRol(rolaux);
 					
 					limpiarCampos();
 					
@@ -150,9 +164,9 @@ public class Rol extends JFrame {
 				else {
 					String nombre = textNombre.getText();
 					// primero la busco por el nombre
-					nRol.buscarRol(nombre);
+					rol.buscarRol(nombre);
 					// luego la elimino
-					nRol.eliminarRol(nRol.getRol().getId());
+					rol.eliminarRol(rol.getRol().getId());
 					
 					limpiarCampos();
 					
@@ -174,10 +188,8 @@ public class Rol extends JFrame {
 				
 				else {
 					String nombre =textNombre.getText();
-					nRol.buscarRol(nombre);
-					textDescripcion.setText(nRol.getRol().getDescripcion());
-					
-					limpiarCampos();
+					rol.buscarRol(nombre);
+					textDescripcion.setText(rol.getRol().getDescripcion());
 					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
