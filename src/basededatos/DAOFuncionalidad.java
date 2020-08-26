@@ -114,8 +114,8 @@ public class DAOFuncionalidad {
 		return funcionalidad;
 	}
 	
-	// Buscar un registro por nombre
-		public static FuncionalidadVO buscarFuncionalidadById(int idFuncionalidad) {
+	// Buscar un registro por ID
+		public static FuncionalidadVO buscarFuncionalidad(int idFuncionalidad) {
 			FuncionalidadVO funcionalidad = new FuncionalidadVO();
 			try {
 				PreparedStatement prprdstmt = conexion.prepareStatement(FIND_BY_ID);
