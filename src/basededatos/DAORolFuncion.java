@@ -17,6 +17,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 	private static final String SELECT = "SELECT * FROM ROL_FUNCION";
 	private static final String UPDATE = "UPDATE ROL_FUNCION SET ID_ROL=?, ID_FUNCION=? WHERE ID_ROL_FUNCION=?";
 	private static final String DELETE = "DELETE FROM ROL_FUNCION WHERE ID_ROL=?";
+	private static final String FIND = "SELECT * FROM rol_funcion WHERE ID_ROL=?";
 	
 	//insertar rol
 	
@@ -100,7 +101,31 @@ private static Connection conexion = DatabaseManager.getConexion();
 				}
 				return filasEliminadas > 0;
 			}
-	
+			
+			// Seleccionar todos los registros segun el rol
+			public static LinkedList<RolFuncionVO> seleccionarRolFuncionByRol(int idRol) {
+				
+				LinkedList<RolFuncionVO> rolFunciones = new LinkedList<>(); 
+				
+				try {
+					PreparedStatement sentencia = conexion.prepareStatement(FIND);
+					
+					sentencia.setInt(1, idRol);
+					
+					ResultSet resultado = sentencia.executeQuery();
+					
+					while(resultado.next()) {
+						RolFuncionVO rolFuncion = new RolFuncionVO();
+						rolFuncion.setIdRolFuncion(resultado.getInt("ID_ROL_FUNCION"));
+						rolFuncion.setIdRol(resultado.getInt("ID_ROL"));
+						rolFuncion.setIdFuncion(resultado.getInt("ID_FUNCION"));
+						rolFunciones.add(rolFuncion);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return rolFunciones;
+			}
 	
 
 }
