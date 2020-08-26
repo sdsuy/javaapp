@@ -83,9 +83,18 @@ public class Funcionalidad extends JFrame {
 					funaux.setDescripcion(txtDescripcion.getText());
 					funcionalidad.agregarFuncionalidad(funaux);
 					
-					limpiarCampos();
+					boolean resultado = funcionalidad.agregarFuncionalidad(funaux);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+						limpiarCampos();
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
 			    }
 				
 			}
@@ -112,9 +121,21 @@ public class Funcionalidad extends JFrame {
 					funaux.setDescripcion(txtDescripcion.getText());
 					funcionalidad.actualizarFuncionalidad(funaux);
 					
-					limpiarCampos();
+					boolean resultado = funcionalidad.actualizarFuncionalidad(funaux);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						
+						limpiarCampos();
+						
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+						
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
 				}
 				
 				
@@ -138,9 +159,19 @@ public class Funcionalidad extends JFrame {
 					// luego la elimino
 					funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
 					
-					limpiarCampos();
+					boolean resultado = funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						limpiarCampos();
+						
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
 				}
 				
 				
