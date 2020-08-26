@@ -81,7 +81,7 @@ public class Funcionalidad extends JFrame {
 			    	FuncionalidadVO funaux = new FuncionalidadVO();
 					funaux.setNombre(txtNombre.getText());
 					funaux.setDescripcion(txtDescripcion.getText());
-					funcionalidad.agregarFuncionalidad(funaux);
+					
 					
 					boolean resultado = funcionalidad.agregarFuncionalidad(funaux);
 					
@@ -119,7 +119,7 @@ public class Funcionalidad extends JFrame {
 					funaux = funcionalidad.getFuncionalidad();
 					// tercero cambio y actualizo el valor de descripción por el nuevo
 					funaux.setDescripcion(txtDescripcion.getText());
-					funcionalidad.actualizarFuncionalidad(funaux);
+					
 					
 					boolean resultado = funcionalidad.actualizarFuncionalidad(funaux);
 					
@@ -157,7 +157,7 @@ public class Funcionalidad extends JFrame {
 					// primero la busco por el nombre
 					funcionalidad.buscarFuncionalidad(nombre);
 					// luego la elimino
-					funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
+					
 					
 					boolean resultado = funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
 					
