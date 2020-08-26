@@ -52,7 +52,21 @@ private RolVO rol;
 	 * @return
 	 */
 	public boolean actualizarRol(RolVO rol) {
-		return DAORol.actualizarRol(rol);
+		boolean actualizado = DAORol.actualizarRol(rol); // actualizo el rol
+		if(actualizado) {
+			if(!DAORolFuncion.eliminarRolFuncion(rol.getId())) {
+				return false; // elimino todas las relaciones con funcionalidades segun el id_rol en una sola consulta y en caso de error retorno false
+			}
+			for(FuncionalidadVO funaux: rol.getFuncionalidades()) {
+				RolFuncionVO rolFuncion = new RolFuncionVO();
+				rolFuncion.setIdFuncion(funaux.getId());
+				rolFuncion.setIdRol(rol.getId());
+				if(!DAORolFuncion.insertarRolFuncion(rolFuncion)) {
+					return false; // retorna false sólo si alguna RolFuncion no logra insertarse
+				}
+			}
+		}
+		return actualizado;
 	}
 	
 	/**
