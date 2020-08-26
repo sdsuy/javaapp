@@ -15,8 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.awt.event.ActionEvent;
 
 public class Rol extends JFrame {
@@ -24,7 +26,9 @@ public class Rol extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNombre;
 	private JTextField textDescripcion;
+	
 	private RolBO rol = new RolBO();
+	private FuncionalidadBO funcionalidad = new FuncionalidadBO();
 
 	/**
 	 * Launch the application.
@@ -74,7 +78,15 @@ public class Rol extends JFrame {
 		lblDescripcion.setBounds(18, 91, 95, 16);
 		contentPane.add(lblDescripcion);
 		
-		JList listFuncionalidades = new JList();
+		// Lleno el listFuncionalidades
+		funcionalidad.obtenerFuncionalidades();
+		LinkedList<FuncionalidadVO> funcionalidades = funcionalidad.getFuncionalidades();
+		DefaultListModel<String> listModel = new DefaultListModel<>();
+		for(FuncionalidadVO funcionalidad: funcionalidades) {
+			listModel.addElement(funcionalidad.getNombre());
+		}
+		
+		JList listFuncionalidades = new JList(listModel);
 		listFuncionalidades.setBounds(234, 22, 197, 235);
 		contentPane.add(listFuncionalidades);
 		
