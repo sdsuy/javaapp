@@ -90,7 +90,7 @@ public class Rol extends JFrame {
 					rol.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
 					nRol.actualizarRol(rol);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 			}
@@ -122,7 +122,7 @@ public class Rol extends JFrame {
 					rol2.setDescripcion(textDescripcion.getText());
 					rol.agregarRol(rol2);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				
@@ -147,7 +147,7 @@ public class Rol extends JFrame {
 					// luego la elimino
 					nRol.eliminarRol(nRol.getRol().getId());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 			}
@@ -168,7 +168,7 @@ public class Rol extends JFrame {
 					nRol.buscarRol(nombre);
 					textDescripcion.setText(nRol.getRol().getDescripcion());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				

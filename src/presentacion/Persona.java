@@ -145,8 +145,8 @@ public class Persona extends JFrame {
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textApellido1.getText().isEmpty() || textApellido2.getText().isEmpty() || textNombre1.getText().isEmpty() || textMail.getText().isEmpty() || 
-						 passwordFieldRepetirClave.getText().isEmpty() || passwordFieldRepetirClave.getText().isEmpty() || textDocumento.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No tiene todos lo caracteres","Error",JOptionPane.ERROR_MESSAGE);
+						 passwordFieldRepetirClave.getText().isEmpty() || textDocumento.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 				}else {
 					String repClave ="";
 					
@@ -170,6 +170,8 @@ public class Persona extends JFrame {
 					repClave = passwordFieldRepetirClave.getText();
 					if(repClave.equals(passwordFieldpaswordClave.getText())) {
 						persona.agregarPersona(peraux);
+						
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
@@ -184,14 +186,26 @@ public class Persona extends JFrame {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PersonaVO per = new PersonaVO();
-				persona.buscarPersona(textDocumento.getText());
-				textDocumento.setText(per.getDocumento());
-				textApellido1.setText(per.getApellido1());
-				textApellido2.setText(per.getApellido2());
-				textNombre1.setText(per.getNombre1());
-				textNombre2.setText(per.getNombre2());
-				textMail.setText(per.getMail());
+				
+				if (textDocumento.getText().isEmpty()) {
+					
+			    	JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+			    }
+				
+				else {
+					PersonaVO per = new PersonaVO();
+					persona.buscarPersona(textDocumento.getText());
+					textDocumento.setText(per.getDocumento());
+					textApellido1.setText(per.getApellido1());
+					textApellido2.setText(per.getApellido2());
+					textNombre1.setText(per.getNombre1());
+					textNombre2.setText(per.getNombre2());
+					textMail.setText(per.getMail());
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 	
 			}
 		});
@@ -201,19 +215,32 @@ public class Persona extends JFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PersonaVO peraux = new PersonaVO();
-				persona.buscarPersona(textDocumento.getText());
-				peraux = persona.getPersona();
-				peraux.setDocumento(textDocumento.getText());
-				peraux.setApellido1(textApellido1.getText());
-				peraux.setApellido2(textApellido2.getText());
-				peraux.setNombre1(textNombre1.getText());
-				peraux.setNombre2(textNombre2.getText());
-				java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
-				peraux.setFecha_nac(sqldate);
-				peraux.setClave(passwordFieldpaswordClave.getText());
-				peraux.setMail(textMail.getText());
-				persona.actualizarPersona(peraux);
+				
+				if(textApellido1.getText().isEmpty() || textApellido2.getText().isEmpty() || textNombre1.getText().isEmpty() || textMail.getText().isEmpty() || 
+						 passwordFieldRepetirClave.getText().isEmpty() || textDocumento.getText().isEmpty()) {
+					
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					PersonaVO peraux = new PersonaVO();
+					persona.buscarPersona(textDocumento.getText());
+					peraux = persona.getPersona();
+					peraux.setDocumento(textDocumento.getText());
+					peraux.setApellido1(textApellido1.getText());
+					peraux.setApellido2(textApellido2.getText());
+					peraux.setNombre1(textNombre1.getText());
+					peraux.setNombre2(textNombre2.getText());
+					java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
+					peraux.setFecha_nac(sqldate);
+					peraux.setClave(passwordFieldpaswordClave.getText());
+					peraux.setMail(textMail.getText());
+					persona.actualizarPersona(peraux);
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
 			}
 		});
 		btnModificar.setBounds(125, 283, 107, 29);
@@ -222,7 +249,11 @@ public class Persona extends JFrame {
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				persona.eliminarPersona(persona.getPersona().getId());
+				
+				JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnEliminar.setBounds(242, 283, 107, 29);
