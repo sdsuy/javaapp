@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 public class Principal {
 
-	private JFrame frame;
+	protected JFrame frame;
 	private PersonaVO persona;
 
 	/**
