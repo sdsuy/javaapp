@@ -16,7 +16,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 	private static final String INSERT = "INSERT INTO ROL_FUNCION (ID_ROL_FUNCION, ID_ROL, ID_FUNCION) VALUES (seq_id_rol_funcion.nextval,?,?)";
 	private static final String SELECT = "SELECT * FROM ROL_FUNCION";
 	private static final String UPDATE = "UPDATE ROL_FUNCION SET ID_ROL=?, ID_FUNCION=? WHERE ID_ROL_FUNCION=?";
-	private static final String DELETE = "DELETE FROM ROL_FUNCION WHERE ID_FUNCION=?";
+	private static final String DELETE = "DELETE FROM ROL_FUNCION WHERE ID_ROL=?";
 	
 	//insertar rol
 	
@@ -81,15 +81,15 @@ private static Connection conexion = DatabaseManager.getConexion();
 				return filasUpdate > 0;
 			}
 			
-			// Eliminar un registro
-			public static boolean eliminarRolFuncion(int idRolFuncion) {
+			// Eliminar registros
+			public static boolean eliminarRolFuncion(int idRol) {
 				
 				int filasEliminadas = 0;
 				
 				try {
 					PreparedStatement sentencia = conexion.prepareStatement(DELETE);
 					
-					sentencia.setInt(1, idRolFuncion);
+					sentencia.setInt(1, idRol);
 					
 					filasEliminadas = sentencia.executeUpdate();
 					
