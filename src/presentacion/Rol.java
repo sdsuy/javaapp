@@ -12,10 +12,12 @@ import dto.RolBO;
 import dto.RolVO;
 
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -239,10 +241,18 @@ public class Rol extends JFrame {
 				}
 				
 				else {
-					String nombre =textNombre.getText();
+					String nombre = textNombre.getText();
 					rol.buscarRol(nombre);
 					textDescripcion.setText(rol.getRol().getDescripcion());
-					
+					ListSelectionModel selectionModel = new DefaultListSelectionModel();
+					int[] indices = new int[rol.getRol().getFuncionalidades().size()];
+					int n = 0;
+					for(FuncionalidadVO funaux: rol.getRol().getFuncionalidades()) {
+						System.out.println(funaux.getNombre());
+						indices[n] = listModel.indexOf(funaux.getNombre());
+						n++;
+					}
+					listFuncionalidades.setSelectedIndices(indices);
 				}
 				
 				
