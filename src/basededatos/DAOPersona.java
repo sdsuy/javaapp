@@ -114,16 +114,16 @@ public class DAOPersona {
 				pst.setString(1, doc);
 				
 				ResultSet rs = pst.executeQuery();
-				while(rs.next()) {
-					rs.getInt("ID_PERSONA");
-					rs.getString("DOCUMENTO");
-					rs.getString("APELLIDO1");
-					rs.getString("APELLIDO2");
-					rs.getString("NOMBRE1");
-					rs.getString("NOMBRE2");
-					rs.getDate("FECHA_NAC");
-					rs.getString("CLAVE");
-					rs.getString("MAIL");
+				if(rs.next()) {
+					per.setId(rs.getInt("ID_PERSONA"));
+					per.setDocumento(rs.getString("DOCUMENTO"));
+					per.setApellido1(rs.getString("APELLIDO1"));
+					per.setApellido2(rs.getString("APELLIDO2"));
+					per.setNombre1(rs.getString("NOMBRE1"));
+					per.setNombre2(rs.getString("NOMBRE2"));
+					per.setFecha_nac(rs.getDate("FECHA_NAC"));
+					per.setClave(rs.getString("CLAVE"));
+					per.setMail(rs.getString("MAIL"));
 					
 				}
 				return per;
