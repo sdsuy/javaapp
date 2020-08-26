@@ -19,6 +19,16 @@ public class DAORol {
 	private static final String UPDATE = "UPDATE ROL SET nombre=?, descripcion=? WHERE ID_ROL=?";
 	private static final String DELETE = "DELETE FROM ROL WHERE ID_ROL=?";
 	private static final String FIND = "SELECT * FROM ROL WHERE NOMBRE=?";
+	private static final String FIND_BY_ID_PERSONA = "SELECT\r\n" + 
+			"    rol.id_rol,\r\n" + 
+			"    rol.nombre,\r\n" + 
+			"    rol.descripcion,\r\n" + 
+			"    persona.id_persona\r\n" + 
+			"FROM\r\n" + 
+			"    rol\r\n" + 
+			"    INNER JOIN persona ON rol.id_rol = persona.id_rol\r\n" + 
+			"WHERE\r\n" + 
+			"    persona.id_persona = ?";
 	
 	//insertar rol
 	
@@ -125,6 +135,29 @@ public class DAORol {
 			}
 			return rol;
 		}
+		
+		//Buscar un registro por id de persona
+		
+				public static RolVO buscarRol(int idPersona) {
+					RolVO rol = new RolVO();
+					try {
+						PreparedStatement sentencia = conexion.prepareStatement(FIND_BY_ID_PERSONA);
+						
+						sentencia.setInt(1, idPersona);
+						
+						ResultSet resultado = sentencia.executeQuery();
+						
+						
+						if(resultado.next()) {
+							rol.setId(resultado.getInt("id_rol"));
+							rol.setNombre(resultado.getString("nombre"));
+							rol.setDescripcion(resultado.getString("descripcion"));
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					return rol;
+				}
 	
 	
 
