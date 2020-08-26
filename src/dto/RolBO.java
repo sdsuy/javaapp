@@ -2,6 +2,7 @@ package dto;
 
 import java.util.LinkedList;
 
+import basededatos.DAOFuncionalidad;
 import basededatos.DAORol;
 import basededatos.DAORolFuncion;
 
@@ -100,6 +101,13 @@ private RolVO rol;
 	 */
 	public void buscarRol(String nombre) {
 		rol = DAORol.buscarRol(nombre);
+		LinkedList<RolFuncionVO> rolFunciones = DAORolFuncion.seleccionarRolFuncionByRol(rol.getId());
+		LinkedList<FuncionalidadVO> funcionalidades = new LinkedList<FuncionalidadVO>();
+		for(RolFuncionVO rolFuncionalidad: rolFunciones) {
+			FuncionalidadVO funcionalidad = DAOFuncionalidad.buscarFuncionalidadById(rolFuncionalidad.getIdFuncion());
+			funcionalidades.add(funcionalidad);
+		}
+		rol.setFuncionalidades(funcionalidades);
 	}
 
 }
