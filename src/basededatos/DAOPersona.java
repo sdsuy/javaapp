@@ -19,7 +19,6 @@ public class DAOPersona {
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=?,ID_ROL=? WHERE ID_PERSONA=?";
 	private static final String ALL_PERSONA = "SELECT * FROM PERSONA WHERE ID_PERSONA";
 	private static final String FIND_PERSONA = "SELECT * FROM PERSONA WHERE DOCUMENTO=?";
-	private static final String SELECT = "SELECT * FROM PERSONA";
 	
 	//insertar persona
 	public static boolean nuevaPersona(PersonaVO persona) {
@@ -50,7 +49,7 @@ public class DAOPersona {
 			LinkedList<PersonaVO> personas = new LinkedList<>(); 
 			try {
 				Statement stmt = conexion.createStatement();
-				ResultSet rset = stmt.executeQuery(SELECT);
+				ResultSet rset = stmt.executeQuery(ALL_PERSONA);
 				
 				while(rset.next()) {
 					RolVO rol = new RolVO();
