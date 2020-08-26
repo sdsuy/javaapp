@@ -3,6 +3,7 @@ package dto;
 import java.util.LinkedList;
 
 import basededatos.DAOPersona;
+import basededatos.DAORol;
 
 public class PersonaBO {
 	
@@ -65,6 +66,8 @@ private PersonaVO persona;
 	 */
 	public void buscarPersona(String documento) {
 		persona = DAOPersona.buscarPersona(documento);
+		RolVO rol = DAORol.buscarRol(persona.getId());
+		persona.setRol(rol);
 	}
 	/**
 	 * Getter de Persona
