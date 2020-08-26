@@ -103,7 +103,7 @@ public class Rol extends JFrame {
 					rolaux.setNombre(textNombre.getText());//Busco por nombre
 					rolaux = rol.getRol();//Recupero el rol encontrado 
 					rolaux.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
-					rol.actualizarRol(rolaux);
+					
 					
 					boolean retorno =  rol.actualizarRol(rolaux);
 					
@@ -160,7 +160,7 @@ public class Rol extends JFrame {
 					RolVO rolaux = new RolVO();
 					rolaux.setNombre(textNombre.getText());
 					rolaux.setDescripcion(textDescripcion.getText());
-					rol.agregarRol(rolaux);
+					
 					
 					boolean resultado = rol.agregarRol(rolaux);
 					
@@ -198,8 +198,6 @@ public class Rol extends JFrame {
 					// primero la busco por el nombre
 					rol.buscarRol(nombre);
 					// luego la elimino
-					rol.eliminarRol(rol.getRol().getId());
-					
 					boolean resultado = rol.eliminarRol(rol.getRol().getId());
 					
 					if (resultado) {
