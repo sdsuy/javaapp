@@ -335,7 +335,7 @@ public class Persona extends JFrame {
 		contentPane.add(lblFechaDeNac);
 	}
 	
-    public void limpiarCampos() {
+    private void limpiarCampos() {
 		
     	textDocumento.setText("");
     	textApellido1.setText("");

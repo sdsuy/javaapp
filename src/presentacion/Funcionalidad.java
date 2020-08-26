@@ -234,7 +234,7 @@ public class Funcionalidad extends JFrame {
 		contentPane.add(btnBuscar);
 	}
 	
-    public void limpiarCampos() {
+    private void limpiarCampos() {
 		
     	txtNombre.setText("");
     	txtDescripcion.setText("");
