@@ -69,6 +69,19 @@ private PersonaVO persona;
 		RolVO rol = DAORol.buscarRol(persona.getId());
 		persona.setRol(rol);
 	}
+	
+	/**
+	 * 
+	 * Busca una persona para el login con mail y password
+	 * @param mail
+	 * @param password
+	 */
+	public void buscarPersona(String username, String password) {
+		persona = DAOPersona.buscarPersona(username, password);
+		RolVO rol = DAORol.buscarRol(persona.getId());
+		persona.setRol(rol);
+	}
+	
 	/**
 	 * Getter de Persona
 	 * @return
