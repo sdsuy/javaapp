@@ -144,6 +144,26 @@ public class Funcionalidad extends JFrame {
 		contentPane.add(btnEliminar);
 		
 		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// -- Codigo para listar
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							// Actualizo la lista de funcionalidades
+							funcionalidad.obtenerFuncionalidades();
+							String[] columnas = { "Nombre", "Descripcion" };
+							// envio el
+							Listado frame = new Listado(funcionalidad.getFuncionalidades(), columnas);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				// -- FIN
+			}
+		});
 		btnListar.setBounds(241, 192, 117, 29);
 		contentPane.add(btnListar);
 		
