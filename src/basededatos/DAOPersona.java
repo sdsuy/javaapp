@@ -19,6 +19,7 @@ public class DAOPersona {
 	private static final String UPDATE_PERSONA = "UPDATE PERSONA SET DOCUMENTO=?, APELLIDO1=?, APELLIDO2=?, NOMBRE1=?, NOMBRE2=?, FECHA_NAC=?,CLAVE=?,MAIL=?,ID_ROL=? WHERE ID_PERSONA=?";
 	private static final String ALL_PERSONA = "SELECT * FROM PERSONA";
 	private static final String FIND_PERSONA = "SELECT * FROM PERSONA WHERE DOCUMENTO=?";
+	private static final String MAIL_PASSWORD_VALID = "SELECT * FROM persona WHERE mail=? AND clave=?";
 	
 	//insertar persona
 	public static boolean nuevaPersona(PersonaVO persona) {
@@ -134,6 +135,32 @@ public class DAOPersona {
 			return null;
 			
 			
+		}
+		
+		public static PersonaVO buscarPersona(String username, String password) {
+			PersonaVO per = new PersonaVO();
+			try {
+				PreparedStatement pst = DatabaseManager.getConexion().prepareStatement(MAIL_PASSWORD_VALID);
+				pst.setString(1, username);
+				pst.setString(2, password);
+				
+				ResultSet rs = pst.executeQuery();
+				if(rs.next()) {
+					per.setId(rs.getInt("ID_PERSONA"));
+					per.setDocumento(rs.getString("DOCUMENTO"));
+					per.setApellido1(rs.getString("APELLIDO1"));
+					per.setApellido2(rs.getString("APELLIDO2"));
+					per.setNombre1(rs.getString("NOMBRE1"));
+					per.setNombre2(rs.getString("NOMBRE2"));
+					per.setFecha_nac(rs.getDate("FECHA_NAC"));
+					per.setClave(rs.getString("CLAVE"));
+					per.setMail(rs.getString("MAIL"));
+				}
+				return per;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
 		}
 		
 
