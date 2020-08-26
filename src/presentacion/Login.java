@@ -5,16 +5,26 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dto.PersonaBO;
+import dto.PersonaVO;
+import dto.RolVO;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textMail;
 	private JPasswordField passwordClave;
+	
+	private PersonaBO persona = new PersonaBO();
 
 	/**
 	 * Launch the application.
@@ -36,7 +46,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 427, 263);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -61,6 +71,30 @@ public class Login extends JFrame {
 		contentPane.add(lblClaveDeAccesso);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String username = textMail.getText();
+				String password = passwordClave.getText();
+				persona.buscarPersona(username, password);
+				PersonaVO peraux = persona.getPersona();
+				if(peraux.getId() > 0) {
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								// Inicio la Aplicacion principal con este usuario administrador de primer uso
+								Principal window = new Principal(peraux);
+								window.frame.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+					Login.this.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuario o clave no son correctos", "Atención!", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		btnLogin.setBounds(156, 146, 89, 23);
 		contentPane.add(btnLogin);
 	}
