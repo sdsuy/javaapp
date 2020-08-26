@@ -105,9 +105,18 @@ public class Rol extends JFrame {
 					rolaux.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
 					rol.actualizarRol(rolaux);
 					
-					limpiarCampos();
+					boolean retorno =  rol.actualizarRol(rolaux);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					if (retorno) {
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+						limpiarCampos();
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+				
 				}
 				
 			}
@@ -153,9 +162,20 @@ public class Rol extends JFrame {
 					rolaux.setDescripcion(textDescripcion.getText());
 					rol.agregarRol(rolaux);
 					
-					limpiarCampos();
+					boolean resultado = rol.agregarRol(rolaux);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+						limpiarCampos();
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
+					
+					
 				}
 				
 				
@@ -180,9 +200,19 @@ public class Rol extends JFrame {
 					// luego la elimino
 					rol.eliminarRol(rol.getRol().getId());
 					
-					limpiarCampos();
+					boolean resultado = rol.eliminarRol(rol.getRol().getId());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+						limpiarCampos();
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
+					
 				}
 				
 			}
@@ -203,7 +233,6 @@ public class Rol extends JFrame {
 					rol.buscarRol(nombre);
 					textDescripcion.setText(rol.getRol().getDescripcion());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				

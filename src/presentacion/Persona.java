@@ -171,9 +171,19 @@ public class Persona extends JFrame {
 					if(repClave.equals(passwordFieldpaswordClave.getText())) {
 						persona.agregarPersona(peraux);
 						
-						limpiarCampos();
+						boolean resultado = persona.agregarPersona(peraux);
 						
-						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+						if (resultado) {
+							limpiarCampos();
+							
+							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+						}
+						
+						else {
+							JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+						}
+						
+						
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
@@ -241,9 +251,19 @@ public class Persona extends JFrame {
 					peraux.setMail(textMail.getText());
 					persona.actualizarPersona(peraux);
 					
-					limpiarCampos();
+					boolean resultado = persona.actualizarPersona(peraux);
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						limpiarCampos();
+						
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
 				}
 				
 				
@@ -259,9 +279,18 @@ public class Persona extends JFrame {
 				
 				persona.eliminarPersona(persona.getPersona().getId());
 				
-				limpiarCampos();
+				boolean resultado = persona.eliminarPersona(persona.getPersona().getId());
 				
-				JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+				if (resultado) {
+					limpiarCampos();
+					
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				else {
+					JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		btnEliminar.setBounds(242, 283, 107, 29);
