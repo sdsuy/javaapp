@@ -169,7 +169,7 @@ public class Persona extends JFrame {
 					peraux.setRol(rolaux);
 					repClave = passwordFieldRepetirClave.getText();
 					if(repClave.equals(passwordFieldpaswordClave.getText())) {
-						persona.agregarPersona(peraux);
+						
 						
 						boolean resultado = persona.agregarPersona(peraux);
 						
@@ -249,7 +249,7 @@ public class Persona extends JFrame {
 					peraux.setFecha_nac(sqldate);
 					peraux.setClave(passwordFieldpaswordClave.getText());
 					peraux.setMail(textMail.getText());
-					persona.actualizarPersona(peraux);
+					
 					
 					boolean resultado = persona.actualizarPersona(peraux);
 					
@@ -276,8 +276,6 @@ public class Persona extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				persona.eliminarPersona(persona.getPersona().getId());
 				
 				boolean resultado = persona.eliminarPersona(persona.getPersona().getId());
 				
