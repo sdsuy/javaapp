@@ -83,6 +83,8 @@ public class Funcionalidad extends JFrame {
 					funaux.setDescripcion(txtDescripcion.getText());
 					funcionalidad.agregarFuncionalidad(funaux);
 					
+					limpiarCampos();
+					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
 			    }
 				
@@ -110,6 +112,8 @@ public class Funcionalidad extends JFrame {
 					funaux.setDescripcion(txtDescripcion.getText());
 					funcionalidad.actualizarFuncionalidad(funaux);
 					
+					limpiarCampos();
+					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
@@ -134,6 +138,8 @@ public class Funcionalidad extends JFrame {
 					// luego la elimino
 					funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
 					
+					limpiarCampos();
+					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
@@ -156,6 +162,9 @@ public class Funcionalidad extends JFrame {
 							// envio el
 							Listado frame = new Listado(funcionalidad.getFuncionalidades(), columnas);
 							frame.setVisible(true);
+							
+							
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -182,6 +191,8 @@ public class Funcionalidad extends JFrame {
 					// luego seteo la descripción
 					txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
 					
+					limpiarCampos();
+					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
@@ -190,5 +201,12 @@ public class Funcionalidad extends JFrame {
 		});
 		btnBuscar.setBounds(241, 64, 117, 29);
 		contentPane.add(btnBuscar);
+	}
+	
+    public void limpiarCampos() {
+		
+    	txtNombre.setText("");
+    	txtDescripcion.setText("");
+    	
 	}
 }

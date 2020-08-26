@@ -171,6 +171,8 @@ public class Persona extends JFrame {
 					if(repClave.equals(passwordFieldpaswordClave.getText())) {
 						persona.agregarPersona(peraux);
 						
+						limpiarCampos();
+						
 						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 					}
 					else {
@@ -201,6 +203,8 @@ public class Persona extends JFrame {
 					textNombre1.setText(per.getNombre1());
 					textNombre2.setText(per.getNombre2());
 					textMail.setText(per.getMail());
+					
+					limpiarCampos();
 					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -237,6 +241,8 @@ public class Persona extends JFrame {
 					peraux.setMail(textMail.getText());
 					persona.actualizarPersona(peraux);
 					
+					limpiarCampos();
+					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
@@ -252,6 +258,8 @@ public class Persona extends JFrame {
 				
 				
 				persona.eliminarPersona(persona.getPersona().getId());
+				
+				limpiarCampos();
 				
 				JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -275,5 +283,17 @@ public class Persona extends JFrame {
 		JLabel lblFechaDeNac = new JLabel("Fecha de Nacimiento");
 		lblFechaDeNac.setBounds(359, 82, 107, 15);
 		contentPane.add(lblFechaDeNac);
+	}
+	
+    public void limpiarCampos() {
+		
+    	textDocumento.setText("");
+    	textApellido1.setText("");
+    	textApellido2.setText("");
+    	textNombre1.setText("");
+    	textNombre2.setText("");
+    	passwordFieldpaswordClave.setText("");
+    	textMail.setText("");
+    	
 	}
 }
