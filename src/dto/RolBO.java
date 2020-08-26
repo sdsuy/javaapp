@@ -104,7 +104,7 @@ private RolVO rol;
 		LinkedList<RolFuncionVO> rolFunciones = DAORolFuncion.seleccionarRolFuncionByRol(rol.getId());
 		LinkedList<FuncionalidadVO> funcionalidades = new LinkedList<FuncionalidadVO>();
 		for(RolFuncionVO rolFuncionalidad: rolFunciones) {
-			FuncionalidadVO funcionalidad = DAOFuncionalidad.buscarFuncionalidadById(rolFuncionalidad.getIdFuncion());
+			FuncionalidadVO funcionalidad = DAOFuncionalidad.buscarFuncionalidad(rolFuncionalidad.getIdFuncion());
 			funcionalidades.add(funcionalidad);
 		}
 		rol.setFuncionalidades(funcionalidades);
