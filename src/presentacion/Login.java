@@ -91,7 +91,7 @@ public class Login extends JFrame {
 					});
 					Login.this.dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Usuario o clave no son correctos", "Atención!", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario o clave no son correctos", "Atento!", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
