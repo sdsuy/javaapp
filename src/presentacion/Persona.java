@@ -295,11 +295,11 @@ public class Persona extends JFrame {
 						limpiarCampos();
 						
 						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
 					}
-				}
-				
-				else {
-					JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+				}else {
+					if(result==JOptionPane.NO_OPTION);
 				}
 				
 			}
