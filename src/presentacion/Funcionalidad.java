@@ -156,21 +156,25 @@ public class Funcionalidad extends JFrame {
 					String nombre = txtNombre.getText();
 					// primero la busco por el nombre
 					funcionalidad.buscarFuncionalidad(nombre);
-					// luego la elimino
-					
-					
-					boolean resultado = funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
-					
-					if (resultado) {
-						limpiarCampos();
+					int result=JOptionPane.showConfirmDialog(null, "Desea continuar?",null,JOptionPane.YES_NO_OPTION);
+					if(result==JOptionPane.YES_OPTION){
+						//luego la elimino
+						boolean resultado = funcionalidad.eliminarFuncionalidad(funcionalidad.getFuncionalidad().getId());
 						
-						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+						if (resultado) {
+							limpiarCampos();
+							
+							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+						}
+						
+						else {
+							JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+						}
+					}else {
+						if(result==JOptionPane.NO_OPTION) {
+			
+						}
 					}
-					
-					else {
-						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-					}
-					
 					
 				}
 				
