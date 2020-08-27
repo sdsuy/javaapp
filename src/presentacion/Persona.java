@@ -287,7 +287,7 @@ public class Persona extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int result=JOptionPane.showConfirmDialog(null, "Desea continuar",null,JOptionPane.YES_NO_OPTION);
+				int result=JOptionPane.showConfirmDialog(null, "Desea continuar?",null,JOptionPane.YES_NO_OPTION);
 				if(result==JOptionPane.YES_OPTION) {
 					boolean resultado = persona.eliminarPersona(persona.getPersona().getId());
 					
