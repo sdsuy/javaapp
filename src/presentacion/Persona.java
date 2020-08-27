@@ -287,13 +287,15 @@ public class Persona extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				boolean resultado = persona.eliminarPersona(persona.getPersona().getId());
-				
-				if (resultado) {
-					limpiarCampos();
+				int result=JOptionPane.showConfirmDialog(null, "Desea continuar",null,JOptionPane.YES_NO_OPTION);
+				if(result==JOptionPane.YES_OPTION) {
+					boolean resultado = persona.eliminarPersona(persona.getPersona().getId());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					if (resultado) {
+						limpiarCampos();
+						
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 				
 				else {
