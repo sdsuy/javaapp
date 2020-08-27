@@ -86,7 +86,7 @@ public class Funcionalidad extends JFrame {
 					boolean resultado = funcionalidad.agregarFuncionalidad(funaux);
 					
 					if (resultado) {
-						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 						limpiarCampos();
 					}
 					
@@ -117,7 +117,7 @@ public class Funcionalidad extends JFrame {
 					funcionalidad.buscarFuncionalidad(funaux.getNombre());
 					// segundo recupero la funcionalidad encontrada
 					funaux = funcionalidad.getFuncionalidad();
-					// tercero cambio y actualizo el valor de descripción por el nuevo
+					// tercero cambio y actualizo el valor de descripciï¿½n por el nuevo
 					funaux.setDescripcion(txtDescripcion.getText());
 					
 					
@@ -219,7 +219,7 @@ public class Funcionalidad extends JFrame {
 					String nombre = txtNombre.getText();
 					// primero la busco por el nombre
 					funcionalidad.buscarFuncionalidad(nombre);
-					// luego seteo la descripción
+					// luego seteo la descripciï¿½n
 					txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
 					
 					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
