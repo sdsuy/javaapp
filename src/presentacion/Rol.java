@@ -211,19 +211,23 @@ public class Rol extends JFrame {
 					String nombre = textNombre.getText();
 					// primero la busco por el nombre
 					rol.buscarRol(nombre);
-					// luego la elimino
-					boolean resultado = rol.eliminarRol(rol.getRol().getId());
+					// Lanzo mensaje de re confirmacion
+					int result=JOptionPane.showConfirmDialog(null, "Desea continuar?",null,JOptionPane.YES_NO_OPTION);
+					if(result==JOptionPane.YES_OPTION) {
+						//elimino el rol
+						boolean resultado = rol.eliminarRol(rol.getRol().getId());
+						if (resultado) {
+							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+							limpiarCampos();
+							
+						}else {
+								JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);	
+								}
 					
-					if (resultado) {
-						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
-						limpiarCampos();
+					}else {
+						if(result==JOptionPane.NO_OPTION) {
+						}
 					}
-					
-					else {
-						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-					}
-					
-					
 					
 				}
 				
