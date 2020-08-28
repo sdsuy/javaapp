@@ -1,8 +1,8 @@
 package presentacion;
 
-import java.awt.Dimension;
+
 import java.awt.EventQueue;
-import java.awt.Image;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,15 +12,14 @@ import javax.swing.JMenuItem;
 
 import dto.PersonaVO;
 import dto.RolVO;
-import imagen.ventana;
+
 
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Toolkit;
-import java.awt.Dialog.ModalExclusionType;
+
 
 public class Principal {
 
