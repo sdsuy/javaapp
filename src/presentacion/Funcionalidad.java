@@ -80,8 +80,8 @@ public class Funcionalidad extends JFrame {
 				
 			    else {
 			    	FuncionalidadVO funaux = new FuncionalidadVO();
-					funaux.setNombre(txtNombre.getText());
-					funaux.setDescripcion(txtDescripcion.getText());
+					funaux.setNombre(txtNombre.getText().toUpperCase());
+					funaux.setDescripcion(txtDescripcion.getText().toUpperCase());
 					
 					
 					boolean resultado = funcionalidad.agregarFuncionalidad(funaux);
@@ -113,13 +113,13 @@ public class Funcionalidad extends JFrame {
 				
 				else {
 					FuncionalidadVO funaux = new FuncionalidadVO();
-					funaux.setNombre(txtNombre.getText());
+					funaux.setNombre(txtNombre.getText().toUpperCase());
 					// primero la busco por el nombre
 					funcionalidad.buscarFuncionalidad(funaux.getNombre());
 					// segundo recupero la funcionalidad encontrada
 					funaux = funcionalidad.getFuncionalidad();
 					// tercero cambio y actualizo el valor de descripci�n por el nuevo
-					funaux.setDescripcion(txtDescripcion.getText());
+					funaux.setDescripcion(txtDescripcion.getText().toUpperCase());
 					
 					
 					boolean resultado = funcionalidad.actualizarFuncionalidad(funaux);
