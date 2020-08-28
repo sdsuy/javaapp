@@ -156,11 +156,11 @@ public class Persona extends JFrame {
 					
 					PersonaBO persona = new PersonaBO();
 					PersonaVO peraux = new PersonaVO();
-					peraux.setDocumento(textDocumento.getText());
-					peraux.setApellido1(textApellido1.getText());
-					peraux.setApellido2(textApellido2.getText());
-					peraux.setNombre1(textNombre1.getText());
-					peraux.setNombre2(textNombre2.getText());
+					peraux.setDocumento(textDocumento.getText().toUpperCase());
+					peraux.setApellido1(textApellido1.getText().toUpperCase());
+					peraux.setApellido2(textApellido2.getText().toUpperCase());
+					peraux.setNombre1(textNombre1.getText().toUpperCase());
+					peraux.setNombre2(textNombre2.getText().toUpperCase());
 					java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
 					peraux.setFecha_nac(sqldate);
 					peraux.setMail(textMail.getText());
@@ -205,7 +205,7 @@ public class Persona extends JFrame {
 				
 				else {
 					PersonaVO per = new PersonaVO();
-					persona.buscarPersona(textDocumento.getText());
+					persona.buscarPersona(textDocumento.getText().toUpperCase());
 					per = persona.getPersona();
 					textDocumento.setText(per.getDocumento());
 					textApellido1.setText(per.getApellido1());
@@ -244,13 +244,13 @@ public class Persona extends JFrame {
 					RolVO rolaux = rol.getRol();
 					
 					PersonaVO peraux = new PersonaVO();
-					persona.buscarPersona(textDocumento.getText());
+					persona.buscarPersona(textDocumento.getText().toUpperCase());
 					peraux = persona.getPersona();
-					peraux.setDocumento(textDocumento.getText());
-					peraux.setApellido1(textApellido1.getText());
-					peraux.setApellido2(textApellido2.getText());
-					peraux.setNombre1(textNombre1.getText());
-					peraux.setNombre2(textNombre2.getText());
+					peraux.setDocumento(textDocumento.getText().toUpperCase());
+					peraux.setApellido1(textApellido1.getText().toUpperCase());
+					peraux.setApellido2(textApellido2.getText().toUpperCase());
+					peraux.setNombre1(textNombre1.getText().toUpperCase());
+					peraux.setNombre2(textNombre2.getText().toUpperCase());
 					java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
 					peraux.setFecha_nac(sqldate);
 					peraux.setClave(passwordFieldpaswordClave.getText());
