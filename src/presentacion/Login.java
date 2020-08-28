@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -97,5 +98,11 @@ public class Login extends JFrame {
 		});
 		btnLogin.setBounds(156, 146, 89, 23);
 		contentPane.add(btnLogin);
+		
+		JLabel lblCorreo = new JLabel("New label");
+		lblCorreo.setIcon(new ImageIcon(Login.class.getResource("/imagen/password.png")));
+		
+		lblCorreo.setBounds(276, 130, 79, 73);
+		contentPane.add(lblCorreo);
 	}
 }
