@@ -4,16 +4,20 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import dto.PersonaVO;
 import dto.RolVO;
+import imagen.ventana;
 
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.Dialog.ModalExclusionType;
@@ -22,7 +26,7 @@ public class Principal {
 
 	protected JFrame frame;
 	private PersonaVO persona;
-	private PanelImagen image = new PanelImagen();
+	
 
 	/**
 	 * Launch the application.
@@ -59,12 +63,11 @@ public class Principal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("/Users/joseluismadridgonzalez/Documents/STIGMA.jpeg"));
 		frame.getContentPane().setForeground(Color.WHITE);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 928, 453);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Menu Principal");
+		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(Color.WHITE);
 		frame.setJMenuBar(menuBar);
@@ -146,6 +149,12 @@ public class Principal {
 		
 		JMenuItem mntmSueldos = new JMenuItem("Sueldos");
 		mnHerramientas.add(mntmSueldos);
+		
+		JLabel lblImagen = new JLabel("");
+		lblImagen.setIcon(new ImageIcon(Principal.class.getResource("/imagen/Stigma.jpg")));
+		frame.getContentPane().add(lblImagen, BorderLayout.CENTER);
+		
+		
 	}
 
 }
