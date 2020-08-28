@@ -238,39 +238,46 @@ public class Persona extends JFrame {
 				}
 				
 				else {
-					// tomo el nombre del rol del comboBox y lo paso a rolaux desde el BO luego de buscarlo
-					String nombreRol = cmbBoxRol.getSelectedItem().toString();
-					rol.buscarRol(nombreRol);
-					RolVO rolaux = rol.getRol();
 					
-					PersonaVO peraux = new PersonaVO();
-					persona.buscarPersona(textDocumento.getText().toUpperCase());
-					peraux = persona.getPersona();
-					peraux.setDocumento(textDocumento.getText().toUpperCase());
-					peraux.setApellido1(textApellido1.getText().toUpperCase());
-					peraux.setApellido2(textApellido2.getText().toUpperCase());
-					peraux.setNombre1(textNombre1.getText().toUpperCase());
-					peraux.setNombre2(textNombre2.getText().toUpperCase());
-					java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
-					peraux.setFecha_nac(sqldate);
-					peraux.setClave(passwordFieldpaswordClave.getText());
-					peraux.setMail(textMail.getText());
-					peraux.setRol(rolaux);
-					String repClave = passwordFieldRepetirClave.getText();
-					if(repClave.equals(passwordFieldpaswordClave.getText())) {
-						boolean resultado = persona.actualizarPersona(peraux);
+					int result=JOptionPane.showConfirmDialog(null, "Desea continuar?",null,JOptionPane.YES_NO_OPTION);
+					if(result==JOptionPane.YES_OPTION) {
 						
-						if (resultado) {
-							limpiarCampos();
+						// tomo el nombre del rol del comboBox y lo paso a rolaux desde el BO luego de buscarlo
+						String nombreRol = cmbBoxRol.getSelectedItem().toString();
+						rol.buscarRol(nombreRol);
+						RolVO rolaux = rol.getRol();
+						
+						PersonaVO peraux = new PersonaVO();
+						persona.buscarPersona(textDocumento.getText().toUpperCase());
+						peraux = persona.getPersona();
+						peraux.setDocumento(textDocumento.getText().toUpperCase());
+						peraux.setApellido1(textApellido1.getText().toUpperCase());
+						peraux.setApellido2(textApellido2.getText().toUpperCase());
+						peraux.setNombre1(textNombre1.getText().toUpperCase());
+						peraux.setNombre2(textNombre2.getText().toUpperCase());
+						java.sql.Date sqldate = new java.sql.Date(dateFechaNac.getDate().getTime());
+						peraux.setFecha_nac(sqldate);
+						peraux.setClave(passwordFieldpaswordClave.getText());
+						peraux.setMail(textMail.getText());
+						peraux.setRol(rolaux);
+						String repClave = passwordFieldRepetirClave.getText();
+						if(repClave.equals(passwordFieldpaswordClave.getText())) {
+							boolean resultado = persona.actualizarPersona(peraux);
 							
-							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+							if (resultado) {
+								limpiarCampos();
+								
+								JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+							}
+							
+							else {
+								JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+							}
+						} else {
+							JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
 						}
 						
-						else {
-							JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-						}
-					} else {
-						JOptionPane.showMessageDialog(null, "Clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
+						
 					}
 					
 					
