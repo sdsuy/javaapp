@@ -112,29 +112,37 @@ public class Funcionalidad extends JFrame {
 			    }
 				
 				else {
-					FuncionalidadVO funaux = new FuncionalidadVO();
-					funaux.setNombre(txtNombre.getText().toUpperCase());
-					// primero la busco por el nombre
-					funcionalidad.buscarFuncionalidad(funaux.getNombre());
-					// segundo recupero la funcionalidad encontrada
-					funaux = funcionalidad.getFuncionalidad();
-					// tercero cambio y actualizo el valor de descripci�n por el nuevo
-					funaux.setDescripcion(txtDescripcion.getText().toUpperCase());
 					
-					
-					boolean resultado = funcionalidad.actualizarFuncionalidad(funaux);
-					
-					if (resultado) {
+					int result=JOptionPane.showConfirmDialog(null, "Desea continuar?",null,JOptionPane.YES_NO_OPTION);
+					if(result==JOptionPane.YES_OPTION) {
 						
-						limpiarCampos();
+						FuncionalidadVO funaux = new FuncionalidadVO();
+						funaux.setNombre(txtNombre.getText().toUpperCase());
+						// primero la busco por el nombre
+						funcionalidad.buscarFuncionalidad(funaux.getNombre());
+						// segundo recupero la funcionalidad encontrada
+						funaux = funcionalidad.getFuncionalidad();
+						// tercero cambio y actualizo el valor de descripci�n por el nuevo
+						funaux.setDescripcion(txtDescripcion.getText().toUpperCase());
 						
-						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+						
+						boolean resultado = funcionalidad.actualizarFuncionalidad(funaux);
+						
+						if (resultado) {
+							
+							limpiarCampos();
+							
+							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+							
+						}
+						
+						else {
+							JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+						}
 						
 					}
 					
-					else {
-						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-					}
+					
 					
 					
 				}
@@ -165,7 +173,7 @@ public class Funcionalidad extends JFrame {
 						if (resultado) {
 							limpiarCampos();
 							
-							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 						}
 						
 						else {
@@ -227,7 +235,7 @@ public class Funcionalidad extends JFrame {
 					// luego seteo la descripci�n
 					txtDescripcion.setText(funcionalidad.getFuncionalidad().getDescripcion());
 					
-					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Error",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				
