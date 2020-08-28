@@ -221,7 +221,7 @@ public class Funcionalidad extends JFrame {
 			    }
 				
 				else {
-					String nombre = txtNombre.getText();
+					String nombre = txtNombre.getText().toUpperCase();
 					// primero la busco por el nombre
 					funcionalidad.buscarFuncionalidad(nombre);
 					// luego seteo la descripci�n
