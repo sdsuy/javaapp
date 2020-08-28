@@ -118,18 +118,22 @@ public class Rol extends JFrame {
 					rolaux = rol.getRol();//Recupero el rol encontrado 
 					rolaux.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
 					rolaux.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades)); // llamo al metodo que crea el LinkedList y lo seteo
-					
-					boolean retorno =  rol.actualizarRol(rolaux);
-					
-					if (retorno) {
-						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
-						limpiarCampos();
+					int result = JOptionPane.showConfirmDialog(null, "Desea modificar?",null,JOptionPane.YES_NO_OPTION);
+					if(result==JOptionPane.YES_OPTION) {
+						boolean retorno =  rol.actualizarRol(rolaux);
+						
+						if (retorno) {
+							JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+							limpiarCampos();
+						}
+						
+						else {
+							JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+						}
+					}else {
+						if(result==JOptionPane.NO_OPTION);
 					}
-					
-					else {
-						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-					}
-					
+						
 				
 				}
 				
