@@ -116,9 +116,9 @@ public class Rol extends JFrame {
 				
 				else {
 					RolVO rolaux = new RolVO();
-					rolaux.setNombre(textNombre.getText());//Busco por nombre
+					rolaux.setNombre(textNombre.getText().toUpperCase());//Busco por nombre
 					rolaux = rol.getRol();//Recupero el rol encontrado 
-					rolaux.setDescripcion(textDescripcion.getText());//Actualizo el valor de descripcion
+					rolaux.setDescripcion(textDescripcion.getText().toUpperCase());//Actualizo el valor de descripcion
 					rolaux.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades)); // llamo al metodo que crea el LinkedList y lo seteo
 					int result = JOptionPane.showConfirmDialog(null, "Desea modificar?",null,JOptionPane.YES_NO_OPTION);
 					if(result==JOptionPane.YES_OPTION) {
@@ -178,8 +178,8 @@ public class Rol extends JFrame {
 				
 				else {
 					RolVO rolaux = new RolVO();
-					rolaux.setNombre(textNombre.getText());
-					rolaux.setDescripcion(textDescripcion.getText());
+					rolaux.setNombre(textNombre.getText().toUpperCase());
+					rolaux.setDescripcion(textDescripcion.getText().toUpperCase());
 					rolaux.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades)); // llamo al metodo que crea elLinkedList y lo seteo
 					
 					boolean resultado = rol.agregarRol(rolaux);
@@ -214,7 +214,7 @@ public class Rol extends JFrame {
 				}
 				
 				else {
-					String nombre = textNombre.getText();
+					String nombre = textNombre.getText().toUpperCase();
 					// primero la busco por el nombre
 					rol.buscarRol(nombre);
 					// Lanzo mensaje de re confirmacion
@@ -251,7 +251,7 @@ public class Rol extends JFrame {
 				}
 				
 				else {
-					String nombre = textNombre.getText();
+					String nombre = textNombre.getText().toUpperCase();
 					rol.buscarRol(nombre);
 					textDescripcion.setText(rol.getRol().getDescripcion());
 					ListSelectionModel selectionModel = new DefaultListSelectionModel();
