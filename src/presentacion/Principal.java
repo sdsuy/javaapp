@@ -14,6 +14,9 @@ import dto.RolVO;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dialog.ModalExclusionType;
 
 public class Principal {
 
@@ -56,10 +59,14 @@ public class Principal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("/Users/joseluismadridgonzalez/Documents/STIGMA.jpeg"));
+		frame.getContentPane().setForeground(Color.WHITE);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Menu Principal");
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setForeground(Color.WHITE);
 		frame.setJMenuBar(menuBar);
 		
 		JMenu mnAdministrar = new JMenu("Administrar");

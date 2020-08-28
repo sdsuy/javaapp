@@ -26,6 +26,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.Toolkit;
 
 public class Rol extends JFrame {
 
@@ -60,6 +61,7 @@ public class Rol extends JFrame {
 	 * Create the frame.
 	 */
 	public Rol() {
+		setTitle("Ventana Rol");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 483, 339);
 		contentPane = new JPanel();

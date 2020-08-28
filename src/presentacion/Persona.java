@@ -58,6 +58,7 @@ public class Persona extends JFrame {
 	 * Create the frame.
 	 */
 	public Persona() {
+		setTitle("Persona");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 491, 363);
 		contentPane = new JPanel();
