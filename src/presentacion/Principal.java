@@ -1,6 +1,8 @@
 package presentacion;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -17,6 +19,7 @@ public class Principal {
 
 	protected JFrame frame;
 	private PersonaVO persona;
+	private PanelImagen image = new PanelImagen();
 
 	/**
 	 * Launch the application.
@@ -55,7 +58,7 @@ public class Principal {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		frame.setTitle("Menu Principal");
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
