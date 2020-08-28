@@ -60,15 +60,15 @@ public class Login extends JFrame {
 		textMail.setColumns(10);
 		
 		passwordClave = new JPasswordField();
-		passwordClave.setBounds(213, 87, 111, 20);
+		passwordClave.setBounds(213, 121, 111, 20);
 		contentPane.add(passwordClave);
 		
 		JLabel lblCorreoElectrnico = new JLabel("Correo electr\u00F3nico:");
-		lblCorreoElectrnico.setBounds(87, 48, 116, 20);
+		lblCorreoElectrnico.setBounds(65, 48, 142, 20);
 		contentPane.add(lblCorreoElectrnico);
 		
 		JLabel lblClaveDeAccesso = new JLabel("Clave de accesso:");
-		lblClaveDeAccesso.setBounds(87, 89, 116, 17);
+		lblClaveDeAccesso.setBounds(65, 123, 116, 17);
 		contentPane.add(lblClaveDeAccesso);
 		
 		JButton btnLogin = new JButton("Login");
@@ -96,13 +96,17 @@ public class Login extends JFrame {
 				}
 			}
 		});
-		btnLogin.setBounds(156, 146, 89, 23);
+		btnLogin.setBounds(165, 180, 89, 23);
 		contentPane.add(btnLogin);
-		
 		JLabel lblCorreo = new JLabel("New label");
 		lblCorreo.setIcon(new ImageIcon(Login.class.getResource("/imagen/password.png")));
-		
-		lblCorreo.setBounds(276, 130, 79, 73);
+		lblCorreo.setBounds(342, 105, 63, 59);
 		contentPane.add(lblCorreo);
+		
+		
+		JLabel lblEmail = new JLabel("New label");
+		lblEmail.setIcon(new ImageIcon(Login.class.getResource("/imagen/imail.png")));
+		lblEmail.setBounds(336, 6, 85, 71);
+		contentPane.add(lblEmail);
 	}
 }
