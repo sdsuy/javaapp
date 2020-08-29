@@ -11,6 +11,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import java.awt.GridLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 public class Listado extends JFrame {
 
@@ -64,13 +67,21 @@ public class Listado extends JFrame {
 				count++;
 			}
 		}
-		contentPane.setLayout(null);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[] {1080, 0};
+		gbl_contentPane.rowHeights = new int[] {800, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
 		
 		table = new JTable(datos, columnas);
 		table.setBounds(0, 0, 1, 1);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(5, 5, 424, 251);
-		contentPane.add(scrollPane);
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 0;
+		contentPane.add(scrollPane, gbc_scrollPane);
 	}
 }
